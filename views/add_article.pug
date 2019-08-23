@@ -7,7 +7,65 @@ block content
       label Title:
       input.form-control(name='title', type='text')
     #form-group
-      label Body:
+      label Address:
       textarea.form-control(name='body')
+    #form-group
+      label MaxCapacity:
+      input.form-control(type='number' name='maxCapacity' min='1' max='16')
+    #form-group
+        label Features:
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Elevator
+        br
+        input(type='checkbox' name='vehicle2' value='Car')
+        | Balcony
+        br
+        input(type='checkbox' name='vehicle2' value='Car')
+        | Terrace
+        br
+        input(type='checkbox' name='vehicle2' value='Car')
+        | HandicapAcessible
+    
+    #form-group
+        label Features2:
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Wifi
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Air Conditioning
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Fire Wood
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Telephone
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Cable TV Premium Serice
+        br
+        input(type='checkbox' name='vehicle1' value='Bike')
+        | Pool
+
+    #form-group
+        label Booking:
+        br
+        input(type='date' name='checkIn')
+        | CheckIn
+        br
+        input(type='date' name='checkOut' min)
+        | CheckOut
+    
+    
+
+
+
+
+
+
+
+
+
     br
     input.btn.btn-primary(type='submit',value='Submit')
