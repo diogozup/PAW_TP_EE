@@ -28,6 +28,9 @@ router.post('/add', function(req, res){
   //req.checkBody('author','Author is required').notEmpty();
   req.checkBody('body','description is required').notEmpty();
   req.checkBody('maxCapacity','Max Occupation Capacity is required').notEmpty();
+  req.checkBody('regions','Region is required').notEmpty();
+  
+
 //   req.checkBody('checkIn','Check-In is required').notEmpty();
 //   req.checkBody('checkOut','Check-Out is required').notEmpty();
 //   req.checkBody('articleImage','Image is required').notEmpty();
@@ -52,6 +55,8 @@ router.post('/add', function(req, res){
     article.author = req.user._id;
     article.body = req.body.body;
     article.maxCapacity = req.body.maxCapacity
+
+    article.regions = req.body.regions
 
     article.feature1 = req.body.feature1
     article.feature2 = req.body.feature2
@@ -104,6 +109,8 @@ router.post('/edit/:id', function(req, res){
   article.author = req.user._id;
   article.body = req.body.body;
   article.maxCapacity = req.body.maxCapacity
+
+  article.regions = req.body.regions
 
   article.feature1 = req.body.feature1
   article.feature2 = req.body.feature2

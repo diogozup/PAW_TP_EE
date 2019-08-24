@@ -10,7 +10,7 @@ block content
       label Author:
       input.form-control(name='author', type='text', value=article.author)
     #form-group
-      label Description:
+      label Address:
       textarea.form-control(name='body')= article.body
     br
 
@@ -59,12 +59,13 @@ block content
     //-     br
     //-     input(type='date' name='checkOut')
     //-     | CheckOut
-    #form-group
-        label Fotos:
-        br
-        input(type='file', name='articleImage')
-        br
+    //- #form-group
+    //-     label Fotos:
+    //-     br
+    //-     input(type='file', name='articleImage')
+    //-     br
     
+    br
     input.btn.btn-primary(type='submit',value='Submit')
 
     

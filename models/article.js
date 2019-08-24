@@ -18,6 +18,10 @@ let articleSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  regions:{
+    type: String,
+    required: true
+  },
   feature1:{
     type: String
   },
