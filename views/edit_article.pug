@@ -10,7 +10,61 @@ block content
       label Author:
       input.form-control(name='author', type='text', value=article.author)
     #form-group
-      label Body:
+      label Description:
       textarea.form-control(name='body')= article.body
     br
+
+    #form-group
+        label Features:
+        br
+        input(type='checkbox' name='feature1' value = 'Elevator' )
+        | Elevator
+        br
+        input(type='checkbox' name='feature2' value='Balcony')
+        | Balcony
+        br
+        input(type='checkbox' name='feature3' value='Terrace')
+        | Terrace
+        br
+        input(type='checkbox' name='feature4' value='HandicapAcessible')
+        | HandicapAcessible
+    
+    #form-group
+        label Premium Features:
+        br
+        input(type='checkbox' name='premiumFeature1' value='wifi')
+        | Wifi
+        br
+        input(type='checkbox' name='premiumFeature2' value='ac')
+        | Air Conditioning
+        br
+        input(type='checkbox' name='premiumFeature3' value='fireWood')
+        | Fire Wood
+        br
+        input(type='checkbox' name='premiumFeature4' value='telephone')
+        | Telephone
+        br
+        input(type='checkbox' name='premiumFeature5' value='tvCable')
+        | Cable TV Premium Serice
+        br
+        input(type='checkbox' name='premiumFeature6' value='pool')
+        | Pool
+
+
+    //- #form-group
+    //-     label Booking:
+    //-     br
+    //-     input(type='date' name='checkIn')
+    //-     | CheckIn
+    //-     br
+    //-     input(type='date' name='checkOut')
+    //-     | CheckOut
+    #form-group
+        label Fotos:
+        br
+        input(type='file', name='articleImage')
+        br
+    
     input.btn.btn-primary(type='submit',value='Submit')
+
+    

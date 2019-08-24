@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer =  require('multer');
+const upload = multer({dest: 'uploads/'});
+
 
 // Article Model
 let Article = require('../models/article');
@@ -7,7 +10,10 @@ let Article = require('../models/article');
 let User = require('../models/user');
 
 // Add Route
-router.get('/add', ensureAuthenticated, function(req, res){
+router.get('/add', upload.single('articleImage'), ensureAuthenticated, function(req, res){
+
+  console.log(req.file);
+
   res.render('add_article', {
     title:'Add Article'
   });
@@ -15,9 +21,22 @@ router.get('/add', ensureAuthenticated, function(req, res){
 
 // Add Submit POST Route
 router.post('/add', function(req, res){
+
+    
+
   req.checkBody('title','Title is required').notEmpty();
   //req.checkBody('author','Author is required').notEmpty();
-  req.checkBody('body','Body is required').notEmpty();
+  req.checkBody('body','description is required').notEmpty();
+  req.checkBody('maxCapacity','Max Occupation Capacity is required').notEmpty();
+//   req.checkBody('checkIn','Check-In is required').notEmpty();
+//   req.checkBody('checkOut','Check-Out is required').notEmpty();
+//   req.checkBody('articleImage','Image is required').notEmpty();
+
+
+
+
+
+  
 
   // Get Errors
   let errors = req.validationErrors();
@@ -32,6 +51,25 @@ router.post('/add', function(req, res){
     article.title = req.body.title;
     article.author = req.user._id;
     article.body = req.body.body;
+    article.maxCapacity = req.body.maxCapacity
+
+    article.feature1 = req.body.feature1
+    article.feature2 = req.body.feature2
+    article.feature3 = req.body.feature3
+    article.feature4 = req.body.feature4
+
+    article.premiumFeature1 = req.body.premiumFeature1
+    article.premiumFeature2 = req.body.premiumFeature2
+    article.premiumFeature3 = req.body.premiumFeature3
+    article.premiumFeature4 = req.body.premiumFeature4
+    article.premiumFeature5 = req.body.premiumFeature5
+    article.premiumFeature6 = req.body.premiumFeature6
+
+    // article.checkIn = req.body.checkIn
+    // article.checkOut = req.body.checkOut
+
+  
+    
 
     article.save(function(err){
       if(err){
@@ -63,8 +101,24 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 router.post('/edit/:id', function(req, res){
   let article = {};
   article.title = req.body.title;
-  article.author = req.body.author;
+  article.author = req.user._id;
   article.body = req.body.body;
+  article.maxCapacity = req.body.maxCapacity
+
+  article.feature1 = req.body.feature1
+  article.feature2 = req.body.feature2
+  article.feature3 = req.body.feature3
+  article.feature4 = req.body.feature4
+
+  article.premiumFeature1 = req.body.premiumFeature1
+  article.premiumFeature2 = req.body.premiumFeature2
+  article.premiumFeature3 = req.body.premiumFeature3
+  article.premiumFeature4 = req.body.premiumFeature4
+  article.premiumFeature5 = req.body.premiumFeature5
+  article.premiumFeature6 = req.body.premiumFeature6
+
+//   article.checkIn = req.body.checkIn
+//   article.checkOut = req.body.checkOut
 
   let query = {_id:req.params.id}
 

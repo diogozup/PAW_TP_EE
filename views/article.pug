@@ -1,9 +1,25 @@
 extends layout
 
 block content
-  h1= article.title
-  h5 Written by #{author}
-  p= article.body
+  h1 Accomodation: #{article.title}
+  h5 Owned by #{author}
+  h5 Description: #{article.body}
+  h5 Max Capacity: #{article.maxCapacity}
+
+  h4 Features:
+  p= article.feature1
+  p= article.feature2
+  p= article.feature3
+  p= article.feature4
+
+  h4 Premium Features:
+  p= article.premiumFeature1
+  p= article.premiumFeature2
+  p= article.premiumFeature3
+  p= article.premiumFeature4
+  p= article.premiumFeature5
+  p= article.premiumFeature6
+
   hr
   if user
     if user.id ==article.author

@@ -1,3 +1,6 @@
+//Comandos que dao jeito
+//lsof -i | grep node  
+//kill -9 *PID* 
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -7,6 +10,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
+const multer = require ('multer');
+
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -36,6 +41,7 @@ app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+// app.use('/uploads', express.static('uploads')); fica publico a pasta para ver imagem pelo url
 
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
