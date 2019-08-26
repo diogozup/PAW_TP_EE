@@ -1,7 +1,10 @@
 let mongoose = require('mongoose');
 
+
 // Article Schema
-let articleSchema = mongoose.Schema({
+let articleSchema = mongoose.Schema ({
+
+
   title:{
     type: String,
     required: true
@@ -52,17 +55,14 @@ let articleSchema = mongoose.Schema({
   premiumFeature6:{
     type: String
   },
-  checkIn:{
+  createdAt:{
     type: Date,
-    require: true
   },
-  checkOut:{
-    type: Date,
-    require: true
+  updatedAt:{
+    type: Date
   },
   articleImage:{
     type: String,
-    require: true
   }
 
 

@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/bookings/add/'+article._id)
+
+    #form-group
+      label Title:
+      input.form-control(name='title', type='text')
+
+    #form-group
+        label Booking:
+        br
+        input(type='date' name='checkIn')
+        | CheckIn
+        br
+        input(type='date' name='checkOut')
+        | CheckOut
+
+    #form-group
+        label Features:
+        br
+        input(type='checkbox' name='feature1' value='Elevator')
+        | Elevator
+        br
+        input(type='checkbox' name='feature2' value='Balcony')
+        | Balcony
+        br
+        input(type='checkbox' name='feature3' value='Terrace')
+        | Terrace
+        br
+        input(type='checkbox' name='feature4' value='HandicapAcessible')
+        | HandicapAcessible
+    
+    #form-group
+        label Premium Features:
+        br
+        input(type='checkbox' name='premiumFeature1' value='Wifi')
+        | Wifi
+        br
+        input(type='checkbox' name='premiumFeature2' value='AC')
+        | Air Conditioning
+        br
+        input(type='checkbox' name='premiumFeature3' value='FireWood')
+        | Fire Wood
+        br
+        input(type='checkbox' name='premiumFeature4' value='Telephone')
+        | Telephone
+        br
+        input(type='checkbox' name='premiumFeature5' value='TVCable')
+        | Cable TV Premium Serice
+        br
+        input(type='checkbox' name='premiumFeature6' value='Pool')
+        | Pool
+
+
+    //- #form-group
+    //-   label Total:
+    //-   input.form-control(type='number' name='maxCapacity' min='1' max='16')
+
+    #form-group
+      input.form-control(type='hidden' name='status' , value='1')
+
+
+
+
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

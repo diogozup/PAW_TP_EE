@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    h3 Title: #{booking.title}
+
+    br
+    h4 Check-In:
+    p= booking.checkIn
+    h4 Check-Out:
+    p= booking.checkOut
+    br
+    h4 Features:
+    p= booking.feature1
+    p= booking.feature2
+    p= booking.feature3
+    p= booking.feature4
+    
+    h4 Premium Features:
+    p= booking.premiumFeature1
+    p= booking.premiumFeature2
+    p= booking.premiumFeature3
+    p= booking.premiumFeature4
+    p= booking.premiumFeature5
+    p= booking.premiumFeature6
+    
+    br
+    br
+    br
+    h7 userID: #{booking.author}
+    br
+    h7 accomodationID: #{booking.authorArticle}
+    br
+    h7 status: #{booking.status}
+
+

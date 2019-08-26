@@ -2,17 +2,18 @@ const express = require('express');
 const router = express.Router();
 const multer =  require('multer');
 const upload = multer({dest: 'uploads/'});
+let mongoose = require('mongoose');
 
 
 // Article Model
 let Article = require('../models/article');
 // User Model
 let User = require('../models/user');
+// Booking Model
+let Booking = require('../models/booking');
 
 // Add Route
-router.get('/add', upload.single('articleImage'), ensureAuthenticated, function(req, res){
-
-  console.log(req.file);
+router.get('/add', ensureAuthenticated, function(req, res){
 
   res.render('add_article', {
     title:'Add Article'
@@ -21,8 +22,6 @@ router.get('/add', upload.single('articleImage'), ensureAuthenticated, function(
 
 // Add Submit POST Route
 router.post('/add', function(req, res){
-
-    
 
   req.checkBody('title','Title is required').notEmpty();
   //req.checkBody('author','Author is required').notEmpty();
@@ -51,8 +50,16 @@ router.post('/add', function(req, res){
     });
   } else {
     let article = new Article();
-    article.title = req.body.title;
+    // Booking.findById(req.body.bookingId)
+    
+
+    article._id = mongoose.Types.ObjectId();
+    article.booking = req.body.bookingId;
+
     article.author = req.user._id;
+
+
+    article.title = req.body.title;    
     article.body = req.body.body;
     article.maxCapacity = req.body.maxCapacity
 
@@ -70,10 +77,7 @@ router.post('/add', function(req, res){
     article.premiumFeature5 = req.body.premiumFeature5
     article.premiumFeature6 = req.body.premiumFeature6
 
-    // article.checkIn = req.body.checkIn
-    // article.checkOut = req.body.checkOut
 
-  
     
 
     article.save(function(err){
@@ -124,8 +128,6 @@ router.post('/edit/:id', function(req, res){
   article.premiumFeature5 = req.body.premiumFeature5
   article.premiumFeature6 = req.body.premiumFeature6
 
-//   article.checkIn = req.body.checkIn
-//   article.checkOut = req.body.checkOut
 
   let query = {_id:req.params.id}
 
@@ -174,6 +176,7 @@ router.get('/:id', function(req, res){
   });
 });
 
+  
 // Access Control
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
@@ -183,5 +186,26 @@ function ensureAuthenticated(req, res, next){
     res.redirect('/users/login');
   }
 }
+
+
+
+
+// show all Accomodations from an user
+router.get('/show/myAccomodations',ensureAuthenticated, function(req, res){
+    Article.find({}, function(err, articles){
+      if(err){
+        console.log(err);
+      } else {
+        res.render('myAccomodations', {
+          title:'Articles',
+          articles: articles
+        });
+      }
+    });
+  });
+
+
+
+
 
 module.exports = router;

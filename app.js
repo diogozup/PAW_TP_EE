@@ -31,6 +31,8 @@ const app = express();
 
 // Bring in Models
 let Article = require('./models/article');
+let Booking = require('./models/booking');
+
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -106,8 +108,10 @@ app.get('/', function(req, res){
 // Route Files
 let articles = require('./routes/articles');
 let users = require('./routes/users');
+let bookings = require('./routes/bookings');
 app.use('/articles', articles);
 app.use('/users', users);
+app.use('/bookings', bookings);
 
 // Start Server
 app.listen(3000, function(){
