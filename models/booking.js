@@ -56,7 +56,7 @@ let bookingSchema = mongoose.Schema({
         type: Number
     },
     status:{
-        type: Number,
+        type: String,
         default: 1
     }
 

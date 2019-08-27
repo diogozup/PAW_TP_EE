@@ -63,6 +63,12 @@ let articleSchema = mongoose.Schema ({
   },
   articleImage:{
     type: String,
+  },
+  createdAt:{
+    type: Date
+  },
+  lasteditedAt:{
+    type: Date
   }
 
 

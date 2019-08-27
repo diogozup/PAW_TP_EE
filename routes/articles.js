@@ -130,6 +130,7 @@ router.post('/edit/:id', function(req, res){
 
 
   let query = {_id:req.params.id}
+  
 
   Article.update(query, article, function(err){
     if(err){
@@ -204,7 +205,7 @@ router.get('/show/myAccomodations',ensureAuthenticated, function(req, res){
     });
   });
 
-
+// change STATUS of BOOKING of pending to terminated || accepted
 
 
 

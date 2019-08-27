@@ -2,9 +2,10 @@ extends layout
 
 
 block content
-  h1 MY Bookings
+  h1 My Bookings
   //#{title}
   ul.list-group
     each booking, i in bookings
-        li.list-group-item
-            a(href="/bookings/show/"+booking._id)= booking.title
+        if user.id == booking.author
+            li.list-group-item
+                a(href="/bookings/show/"+booking._id)= booking.title
