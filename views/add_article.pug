@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/add')
+  form(method='POST', action='/articles/add' , enctype="multipart/form-data")
     #form-group
       label Title:
       input.form-control(name='title', type='text')
@@ -58,23 +58,10 @@ block content
         input(type='checkbox' name='premiumFeature6' value='Pool')
         | Pool
 
-
-    //- #form-group
-    //-     label Booking:
-    //-     br
-    //-     input(type='date' name='checkIn')
-    //-     | CheckIn
-    //-     br
-    //-     input(type='date' name='checkOut')
-    //-     | CheckOut
-    //- #form-group
-    //-     label Fotos:
-    //-     br
-    //-     input(type='file', name='articleImage')
-
-
-
-
+        #form-group
+        label Premium Features:
+        br
+        input(type='file' name='articleImage' )
 
 
 

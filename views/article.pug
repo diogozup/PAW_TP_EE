@@ -3,9 +3,9 @@ extends layout
 block content
   h1 Accomodation: #{article.title}
   br
-  h4 Region: #{article.regions}
-  h5 Address: #{article.body}
-  h5 Max Capacity: #{article.maxCapacity}
+  h3 Region: #{article.regions}
+  h4 Address: #{article.body}
+  h4 Max Capacity: #{article.maxCapacity}
   br
   h4 Features:
   p= article.feature1
@@ -21,9 +21,14 @@ block content
   p= article.premiumFeature5
   p= article.premiumFeature6
 
+  
   br
+  br
+  img.className#IdName(src= '/' + article.articleImage alt="Image Title" style='width:350px; height:300px;' )
   br
   h6 Owned by #{author}
+
+ 
 
   
   hr

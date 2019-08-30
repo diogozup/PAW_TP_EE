@@ -1,8 +1,52 @@
 const express = require('express');
 const router = express.Router();
-const multer =  require('multer');
-const upload = multer({dest: 'uploads/'});
 let mongoose = require('mongoose');
+
+
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Article Model
@@ -21,7 +65,11 @@ router.get('/add', ensureAuthenticated, function(req, res){
 });
 
 // Add Submit POST Route
-router.post('/add', function(req, res){
+router.post('/add', upload.single('articleImage') , function(req, res){
+
+console.log(req.body);
+// console.log(req.file);
+// console.log(req);
 
   req.checkBody('title','Title is required').notEmpty();
   //req.checkBody('author','Author is required').notEmpty();
@@ -50,6 +98,7 @@ router.post('/add', function(req, res){
     });
   } else {
     let article = new Article();
+    console.log(req.file);
     // Booking.findById(req.body.bookingId)
     
 
@@ -77,7 +126,7 @@ router.post('/add', function(req, res){
     article.premiumFeature5 = req.body.premiumFeature5
     article.premiumFeature6 = req.body.premiumFeature6
 
-
+    article.articleImage =  req.file.path
     
 
     article.save(function(err){

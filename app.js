@@ -43,7 +43,9 @@ app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-// app.use('/uploads', express.static('uploads')); fica publico a pasta para ver imagem pelo url
+
+app.use('/uploads', express.static('uploads')); //pasta fica publica
+
 
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));

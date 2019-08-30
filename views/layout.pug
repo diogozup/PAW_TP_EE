@@ -4,10 +4,13 @@ html
     title Booking PandaPanda
     link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet' href='/css/style.css')
-
-
-  body 
     
+    
+
+
+
+
+
     nav.navbar.navbar-inverse
       .container
         .navbar-header
@@ -21,21 +24,21 @@ html
           ul.nav.navbar-nav
             li
               a(href='/') Home
-            if user
+            li
+            if user                
                 li
                     a(href='/') Accomodations
-                ul 
-                    li
-                        a(href='/articles/add') Add Accomodation
-                    li
-                        a(href='/articles/show/myAccomodations') My Accomodations
-                    li
-                        a(href='/bookings/show/myAccomodations/BookingRequests') My Accomodations Bookings Requests
+                li
+                    a(href='/articles/add') Add Accomodation
+                li
+                    a(href='/articles/show/myAccomodations') My Accomodations
+                li
+                    a(href='/bookings/show/myAccomodations/BookingRequests') My Accomodations Bookings Requests
                 li
                     a(href='/bookings/show/allBookings') Bookings
-                ul
-                    li
-                        a(href='/bookings/myBookings') My Bookings
+
+                li
+                    a(href='/bookings/myBookings') My Bookings
 
 
 
