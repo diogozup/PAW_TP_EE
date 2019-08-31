@@ -123,7 +123,93 @@ router.get('/myBookings',ensureAuthenticated, function(req, res){
 
 
 
-//  List MyAccomodations Booking Requests
+
+
+
+
+// Access Control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+      return next();
+    } else {
+      req.flash('danger', 'Please login');
+      res.redirect('/users/login');
+    }
+  }
+  
+
+
+// GET MAKE STATUS UPDATE DECISION em booking by id
+router.get('/show/makeDecision/:id' , function(req, res){
+    Article.find({}, function(err, articles){  
+      Booking.findById(req.params.id, function(err, booking){    
+          res.render('booking_status_decision', {
+              title:'Booking',
+              booking:booking,
+              articles:articles
+          });
+      });
+   });
+});
+
+
+// STATUS UPDATE GET aceitar ou decline offer
+router.get('/show/makeDecision/statusUpdate/:id', ensureAuthenticated, function(req, res){
+    
+    Booking.findById(req.params.id, function(err, booking){
+
+      res.render('statusUpdate', {
+        title:'Update Booking Status',
+        booking:booking
+      });
+    });
+   });
+
+
+
+// STATUS UPDATE POST aceitar ou decline offer
+router.post('/show/makeDecision/statusUpdate/:id', ensureAuthenticated, function(req,res,next){
+
+    var id = req.params.id;
+
+    Booking.findOne({_id:id}, function(err, foundObject){
+        if(err){
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if(!foundObject){
+                res.status(404).send();
+            } else {
+                if(req.body.status){
+                    foundObject.status = req.body.status;
+                }
+                foundObject.save(function(err, updatedObject){
+                    if(err){
+                        console.log(err);
+                        res.status(500).send();
+                    } else {
+                        //res.send(updatedObject);
+                        req.flash('success','Booking Status Updated');
+                        res.redirect('/');
+
+                    }
+                });
+
+            }
+        }
+
+    });
+
+
+
+
+});
+
+
+
+
+
+//  List MyAccomodations Booking Requests (historic)
 router.get('/show/myAccomodations/BookingRequests', ensureAuthenticated, function(req, res){
     Article.find({}, function(err, articles){
         Booking.find({}, function(err, bookings){
@@ -141,93 +227,39 @@ router.get('/show/myAccomodations/BookingRequests', ensureAuthenticated, functio
   });
 
 
-
-
-
-
-
-
-
-
-
-
-// Access Control
-function ensureAuthenticated(req, res, next){
-    if(req.isAuthenticated()){
-      return next();
-    } else {
-      req.flash('danger', 'Please login');
-      res.redirect('/users/login');
-    }
-  }
-  
-
-
-
-
-router.post('/update/status/:id', ensureAuthenticated, function(req,res,next){
-   
-    let booking = {};
-    booking.title = req.body.title  
-
-    booking.author = req.user._id;
-    booking.authorArticle = req.params.id;
-
-    booking.checkIn = req.body.checkIn
-    booking.checkOut = req.body.checkOut
-
-    booking.feature1 = req.body.feature1
-    booking.feature2 = req.body.feature2
-    booking.feature3 = req.body.feature3
-    booking.feature4 = req.body.feature4
-
-    booking.premiumFeature1 = req.body.premiumFeature1
-    booking.premiumFeature2 = req.body.premiumFeature2
-    booking.premiumFeature3 = req.body.premiumFeature3
-    booking.premiumFeature4 = req.body.premiumFeature4
-    booking.premiumFeature5 = req.body.premiumFeature5
-    booking.premiumFeature6 = req.body.premiumFeature6 
-
-    booking.status = null
-    booking.status = req.body.status
-
-
-
-    var query = {_id:req.params.id}
-    
-    Booking.updateOne(query, booking, function(err){
+//  List MyAccomodations Booking Requests (accepted)
+router.get('/show/myAccomodations/BookingRequestsAccepted', ensureAuthenticated, function(req, res){
+    Article.find({}, function(err, articles){
+        Booking.find({}, function(err, bookings){
         if(err){
-          console.log(err);
-          return;
+            console.log(err);
         } else {
-          req.flash('success', 'Booking Status Updated');
-          res.redirect('/');
+            res.render('myAccomodationsBookingRequestsAccepted', {
+            title:'All Accepted Booking from my Accomodations',
+            bookings: bookings,
+            articles: articles
+            });
         }
-      });
-
-});
-
-
-// Load Edit Form
-router.get('/update/status/:id', ensureAuthenticated, function(req, res){
-    // console.log ('This is params:');
-    // console.log (req.params);
-    // console.log ('This is body:');
-    // console.log (req.body);
-    
-    Booking.findById(req.params.id, function(err, booking){
-      if(booking.author != req.user._id){
-        req.flash('danger', 'Not Authorized');
-        res.redirect('/');
-      }
-      res.render('statusUpdate', {
-        title:'Update Booking Status',
-        booking:booking
-      });
+        });
     });
-   });
+  });
 
-
+  //  List MyAccomodations Booking Requests (declined)
+router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, function(req, res){
+    Article.find({}, function(err, articles){
+        Booking.find({}, function(err, bookings){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('myAccomodationsBookingRequestsPending', {
+            title:'All Pending Booking from my Accomodations',
+            bookings: bookings,
+            articles: articles
+            });
+        }
+        });
+    });
+  });
 
 
 

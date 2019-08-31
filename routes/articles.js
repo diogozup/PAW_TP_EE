@@ -67,12 +67,11 @@ router.get('/add', ensureAuthenticated, function(req, res){
 // Add Submit POST Route
 router.post('/add', upload.single('articleImage') , function(req, res){
 
-console.log(req.body);
+// console.log(req.body);
 // console.log(req.file);
 // console.log(req);
 
   req.checkBody('title','Title is required').notEmpty();
-  //req.checkBody('author','Author is required').notEmpty();
   req.checkBody('body','description is required').notEmpty();
   req.checkBody('maxCapacity','Max Occupation Capacity is required').notEmpty();
   req.checkBody('regions','Region is required').notEmpty();

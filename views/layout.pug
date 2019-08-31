@@ -26,14 +26,22 @@ html
               a(href='/') Home
             li
             if user                
+                //- li
+                //-     a(href='/') Accomodations
                 li
-                    a(href='/') Accomodations
+                    a(href='#') _______________________________________________________________________________________________________________________________
                 li
                     a(href='/articles/add') Add Accomodation
                 li
-                    a(href='/articles/show/myAccomodations') My Accomodations
+                    a(href='/articles/show/myAccomodations') My Accomodations                                                              
                 li
-                    a(href='/bookings/show/myAccomodations/BookingRequests') My Accomodations Bookings Requests
+                    a(href='/bookings/show/myAccomodations/BookingRequests') Offers(All)
+                li
+                    a(href='/bookings/show/myAccomodations/BookingRequestsAccepted') Offers(Accepted)
+                li
+                    a(href='/bookings/show/myAccomodations/BookingRequestsPending') Offers(Pending)
+                li
+                    a(href='#') _________________________________________________________________________________________________________________________________________________        
                 li
                     a(href='/bookings/show/allBookings') Bookings
 

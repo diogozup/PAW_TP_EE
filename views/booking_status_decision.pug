@@ -25,7 +25,10 @@ block content
     
     br
     br
-    br    
+    hr
+    a.btn.btn-default(href='statusUpdate/'+booking.id) Make Decision
+
+    br
     br
     br    
     br
@@ -37,17 +40,15 @@ block content
     br
     br    
     br
-    
-    
-    
-    
-    
+    br    
+    br
+
     hr
     h7 userID: #{booking.author}
     br
     h7 accomodationID: #{booking.authorArticle}
     br
-    h7 status : #{booking.status}
+    h7 status historic: #{booking.status}
     br
     h8 status: 0 = Booking Request Declined by owner
     br
