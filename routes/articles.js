@@ -99,12 +99,6 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.articleImage =  req.file.path
 
     article.features = req.body.features
-    article.premiumFeatures = req.body.premiumFeatures
-
-    article.feature1 = req.body.feature1
-    article.feature2 = req.body.feature2
-    article.feature3 = req.body.feature3
-    article.feature4 = req.body.feature4
     
 
     article.premiumFeature1 = req.body.premiumFeature1
@@ -153,15 +147,7 @@ router.post('/edit/:id', function(req, res){
 
   article.regions = req.body.regions
 
-
-
-  article.feature1 = req.body.feature1
-  article.feature2 = req.body.feature2
-  article.feature3 = req.body.feature3
-  article.feature4 = req.body.feature4
-
-  article.features = req.body.features
-  article.premiumFeatures = req.body.premiumFeatures
+  article.features = req.body.features  
 
 
   article.premiumFeature1 = req.body.premiumFeature1

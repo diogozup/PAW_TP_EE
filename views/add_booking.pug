@@ -16,22 +16,7 @@ block content
         br
         input(type='date' name='checkOut')
         | CheckOut
-
-    #form-group
-        label Features:
-        br
-        input(type='checkbox' name='feature1' value='Elevator')
-        | Elevator
-        br
-        input(type='checkbox' name='feature2' value='Balcony')
-        | Balcony
-        br
-        input(type='checkbox' name='feature3' value='Terrace')
-        | Terrace
-        br
-        input(type='checkbox' name='feature4' value='HandicapAcessible')
-        | HandicapAcessible
-    
+ 
     #form-group
         label Premium Features:
         br
@@ -57,6 +42,11 @@ block content
     #form-group
         input.form-control(type='hidden' name='status' , value='1')
 
+    #form-group
+        input.form-control(type='hidden' name='features' , value=article.features)
+    
+        #form-group
+        input.form-control(type='hidden' name='bookingImage' , value=article.articleImage)
 
 
 

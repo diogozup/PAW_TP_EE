@@ -3,18 +3,21 @@ extends layout
 block content
   h1 Accomodation: #{article.title}
   br
+  br
+  h2 Photo
+  img.className#IdName(src= '/' + article.articleImage alt="Image Title" style='width:350px; height:300px;' )
+  br
+  h6 Owned by #{author}
+  br
   h3 Region: #{article.regions}
   h4 Address: #{article.body}
   h4 Max Capacity: #{article.maxCapacity}
   br
-  h4 Features:
-  p= article.feature1
-  p= article.feature2
-  p= article.feature3
-  p= article.feature4
+  h3 Features:
+  p= article.features
   br
   h4 Premium Features:
-  p= article.premiumFeature1
+  p= article.premiumFeature1  
   p= article.premiumFeature2
   p= article.premiumFeature3
   p= article.premiumFeature4
@@ -22,12 +25,7 @@ block content
   p= article.premiumFeature6
 
   
-  br
-  br
-  h2 Photo
-  img.className#IdName(src= '/' + article.articleImage alt="Image Title" style='width:350px; height:300px;' )
-  br
-  h6 Owned by #{author}
+
 
  
 

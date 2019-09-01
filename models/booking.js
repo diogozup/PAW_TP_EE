@@ -10,24 +10,25 @@ let bookingSchema = mongoose.Schema({
     checkIn:{ type: Date, required:true },
     checkOut:{type: Date, required:true },
 
-    feature1:{ type: String },
-    feature2:{ type: String },
-    feature3:{ type: String },
-    feature4:{ type: String },
+    createdAt: {type: Date, default: Date.now },
+
+    features:{ type: String },
+
     premiumFeature1:{ type: String },
     premiumFeature2:{ type: String },
     premiumFeature3:{ type: String },
     premiumFeature4:{ type: String },
     premiumFeature5:{ type: String },
     premiumFeature6:{ type: String },
-    
+
     featuresTotalPrice:         { type: Number , default : 0 },
     premiumFeaturesTotalPrice:  { type: Number , default : 0 },
     finalTotalPrice:            { type: Number , default : 0 },
     
-    status:{ type: String, default: 1 }
 
+    status:{ type: String, default: 1 },
 
+    bookingImage:{ type: String }
 
 });
 

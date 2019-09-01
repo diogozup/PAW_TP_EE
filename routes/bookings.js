@@ -27,6 +27,8 @@ router.get('/add/:id', ensureAuthenticated , function(req, res){
 // POST add booking references articles
 router.post('/add/:id', function(req, res){
 
+    console.log("BODY DESTE ADD BOOKING:");
+    console.log(req.body);
     // Get Errors
     let errors = req.validationErrors();
   
@@ -45,11 +47,9 @@ router.post('/add/:id', function(req, res){
         booking.checkIn = req.body.checkIn
         booking.checkOut = req.body.checkOut
 
-        booking.feature1 = req.body.feature1
-        booking.feature2 = req.body.feature2
-        booking.feature3 = req.body.feature3
-        booking.feature4 = req.body.feature4
-
+   
+        booking.features = req.body.features
+   
         booking.premiumFeature1 = req.body.premiumFeature1
         booking.premiumFeature2 = req.body.premiumFeature2
         booking.premiumFeature3 = req.body.premiumFeature3
@@ -58,6 +58,13 @@ router.post('/add/:id', function(req, res){
         booking.premiumFeature6 = req.body.premiumFeature6 
 
         booking.status = req.body.status
+        booking.featuresTotalPrice = req.body.featuresTotalPrice
+        booking.premiumFeaturesTotalPrice = req.body.premiumFeaturesTotalPrice
+        booking.finalTotalPrice = req.body.finalTotalPrice
+        
+
+
+
 
       booking.save(function(err){
         if(err){
@@ -70,6 +77,9 @@ router.post('/add/:id', function(req, res){
       });
     }
   });
+
+
+
 
 
 // Get ALL Bookings 

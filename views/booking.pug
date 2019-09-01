@@ -10,10 +10,8 @@ block content
     p= booking.checkOut
     br
     h4 Features:
-    p= booking.feature1
-    p= booking.feature2
-    p= booking.feature3
-    p= booking.feature4
+    p= booking.features
+
     
     h4 Premium Features:
     p= booking.premiumFeature1
@@ -40,7 +38,8 @@ block content
     
     
     
-    
+    h2 Photo
+    img.className#IdName(src= '/' + booking.bookingImage alt="Image devia tar aqui" style='width:350px; height:300px;' )
     
     hr
     h7 userID: #{booking.author}

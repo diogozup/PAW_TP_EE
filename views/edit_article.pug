@@ -8,25 +8,25 @@ block content
       input.form-control(name='title', type='text', value=article.title)
     #form-group
       label Author:
-      input.form-control(name='author', type='text', value=article.author)
+      input.form-control(name='author', type='text', value=article.author, readonly = 'readonly')
     #form-group
       label Address:
       textarea.form-control(name='body')= article.body
     br
 
     #form-group
-        label Features:
-        br
-        input(type='checkbox' name='feature1')
-        | Elevator
-        br
-        input(type='checkbox' name='feature2')        | Balcony
-        br
-        input(type='checkbox' name='feature3' value='Terrace')
-        | Terrace
-        br
-        input(type='checkbox' name='feature4' value='HandicapAcessible' , checked=(true===false ? "checked" : undefined))
-        | HandicapAcessible
+        label Region:
+        select.form-control(name='regions')
+            option(value='North') North
+            option(value='Center') Center
+            option(value='South') South
+            option(value='Azores') Azores
+            option(value='Madeira') Madeira
+
+
+    #form-group
+      label MaxCapacity:
+      input.form-control(type='number' name='maxCapacity' min='1' max='16', value=article.maxCapacity)
     
     #form-group
         label Premium Features:
@@ -49,21 +49,10 @@ block content
         input(type='checkbox' name='premiumFeature6' value='pool')
         | Pool
 
+    #form-group
+        input.form-control(type='hidden' name='features' , value=article.features)
 
-    //- #form-group
-    //-     label Booking:
-    //-     br
-    //-     input(type='date' name='checkIn')
-    //-     | CheckIn
-    //-     br
-    //-     input(type='date' name='checkOut')
-    //-     | CheckOut
-    //- #form-group
-    //-     label Fotos:
-    //-     br
-    //-     input(type='file', name='articleImage')
-    //-     br
-    
+
     br
     input.btn.btn-primary(type='submit',value='Submit')
 
