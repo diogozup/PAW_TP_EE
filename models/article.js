@@ -57,6 +57,7 @@ let articleSchema = mongoose.Schema ({
   },
   createdAt:{
     type: Date,
+    default: Date.now
   },
   updatedAt:{
     type: Date
@@ -70,6 +71,22 @@ let articleSchema = mongoose.Schema ({
   },
   lasteditedAt:{
     type: Date
+  },
+  featurePrice:{
+    type: Number,
+    default: 0
+  },
+  premiumFeaturePrice:{
+    type: Number,
+    default: 0
+  },
+  nightPrice:{
+    type: Number,
+    default: 0
+  },
+  Total:{
+    type: Number,
+    default: 0
   }
 
 

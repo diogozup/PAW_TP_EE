@@ -97,7 +97,10 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     });
   } else {
     let article = new Article();
+    
     console.log(req.file);
+    console.log("REQ BODY EM BAIXO:");
+    console.log(req.body);
     // Booking.findById(req.body.bookingId)
     
 
@@ -126,7 +129,8 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.premiumFeature6 = req.body.premiumFeature6
 
     article.articleImage =  req.file.path
-    
+
+   
 
     article.save(function(err){
       if(err){
