@@ -100,8 +100,6 @@ router.post('/add', upload.single('articleImage') , function(req, res){
 
     article.features = req.body.features
     
-            //- li
-            //-   a(href='/') Home
     article.premiumFeature1 = req.body.premiumFeature1
     article.premiumFeature2 = req.body.premiumFeature2
     article.premiumFeature3 = req.body.premiumFeature3
@@ -109,7 +107,7 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.premiumFeature5 = req.body.premiumFeature5
     article.premiumFeature6 = req.body.premiumFeature6
     
-   
+    article.createdAt = req.body.createdAt
 
     article.save(function(err){
       if(err){

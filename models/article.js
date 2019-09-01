@@ -26,10 +26,7 @@ let articleSchema = mongoose.Schema ({
   features:{ type: String },
   premiumFeatures:{ type: String },
 
-//   feature1:{ type: String } , 
-//   feature2:{ type: String } ,
-//   feature3:{ type: String } ,
-//   feature4:{ type: String } ,
+
   premiumFeature1:{ type: String },
   premiumFeature2:{ type: String },
   premiumFeature3:{ type: String },
@@ -37,7 +34,7 @@ let articleSchema = mongoose.Schema ({
   premiumFeature5:{ type: String },
   premiumFeature6:{ type: String },
 
-
+ 
   
 });
 

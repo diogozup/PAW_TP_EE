@@ -16,7 +16,8 @@ block content
         br
         input(type='date' name='checkOut')
         | CheckOut
-
+        br
+        label Total Days: 
 
 
 
@@ -27,37 +28,37 @@ block content
         #premiumFeaturesGroup
             label Premium Features:
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature1' value='12')
-            | Wifi
+            input(type='checkbox' id='myPremiumFeaturePrice1' name='premiumFeature1' value='Wifi')
+            | Wifi - 05.00€
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature2' value='12')
-            | Air Conditioning
+            input(type='checkbox' id='myPremiumFeaturePrice2' name='premiumFeature2' value='AC')
+            | Air Conditioning - 42.00€
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature3' value='12')
-            | Fire Wood
+            input(type='checkbox' id='myPremiumFeaturePrice3' name='premiumFeature3' value='FireWood')
+            | Fire Wood - 33.00€
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature4' value='12')
-            | Telephone
+            input(type='checkbox' id='myPremiumFeaturePrice4' name='premiumFeature4' value='Telephone')
+            | Telephone - 11.00€
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature5' value='12')
-            | Cable TV Premium Serice
+            input(type='checkbox' id='myPremiumFeaturePrice5' name='premiumFeature5' value='Cable TV')
+            | Cable TV Premium Serice - 27.00€
             br
-            input(type='checkbox' id='myPreamiumFeaturePrice' name='premiumFeature6' value='12')
-            | Pool
+            input(type='checkbox' id='myPremiumFeaturePrice6' name='premiumFeature6' value='Pool')
+            | Pool - 120.00€
             br
             p.total-cost
             label Total Cost: $ 
-            input.total-cost(type='text', name='total-cost', value='25', readonly='readonly')
+            input.total-cost(type='text', name='total-cost', value='05', readonly='readonly')
 
 
             input.form-control(type='hidden' name='totalCost' , value='')
-            input.form-control(type='hidden' name='bookingImage' , value=article.articleImage)
+
 
             input.form-control(type='hidden' name='status' , value='1')
             input.form-control(type='hidden' name='features' , value=article.features)
             input.form-control(type='hidden' name='bookingImage' , value=article.articleImage)
 
-
+            input(type='hidden' name='createdAt' value= Date() )
 
 
 
@@ -69,11 +70,19 @@ block content
 
   script.
         function calculateCheckbox() {
+            document.getElementById("myPremiumFeaturePrice1").value = "5";
+            document.getElementById("myPremiumFeaturePrice2").value = "42";
+            document.getElementById("myPremiumFeaturePrice3").value = "33";
+            document.getElementById("myPremiumFeaturePrice4").value = "11";
+            document.getElementById("myPremiumFeaturePrice5").value = "27";
+            document.getElementById("myPremiumFeaturePrice6").value = "120";
+            
             // get beauty products checkboxes contianer's reference
-            var el = document.getElementById('premiumFeaturesGroup');
+            var el = document.getElementById('premiumFeaturesGroup') ;
 
            // get beauty product input element reference in beauty products container
             var products = el.getElementsByTagName('input');
+            
             
             // get products length
             var len = products.length;
@@ -110,5 +119,8 @@ block content
         
         // call calculateCheckbox method
         calculateCheckbox();
+
+
+
 
 

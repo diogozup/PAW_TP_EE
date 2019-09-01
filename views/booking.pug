@@ -1,8 +1,10 @@
 extends layout
 
 block content
-    h3 Title: #{booking.title}
-
+    h1 Title: #{booking.title}
+    br
+    h3 Pic
+    img.className#IdName(src= '/' + booking.bookingImage alt="Image devia tar aqui" style='width:350px; height:300px;' )
     br
     h4 Check-In:
     p= booking.checkIn
@@ -13,7 +15,7 @@ block content
     p= booking.features
 
     
-    h4 Premium Features:
+    h4 Premium Features :
     p= booking.premiumFeature1
     p= booking.premiumFeature2
     p= booking.premiumFeature3
@@ -21,6 +23,8 @@ block content
     p= booking.premiumFeature5
     p= booking.premiumFeature6
     
+    h5 Created At: 
+    p= booking.createdAt
     br
     br
     br    
@@ -38,8 +42,7 @@ block content
     
     
     
-    h2 Photo
-    img.className#IdName(src= '/' + booking.bookingImage alt="Image devia tar aqui" style='width:350px; height:300px;' )
+
     
     hr
     h7 userID: #{booking.author}

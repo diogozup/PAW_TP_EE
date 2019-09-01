@@ -60,7 +60,7 @@ router.post('/add/:id', function(req, res){
         booking.status = req.body.status
         booking.bookingImage = req.body.bookingImage
 
-
+        booking.createdAt = req.body.createdAt
         
         booking.premiumFeaturesTotalPrice = req.body.totalCost
     
