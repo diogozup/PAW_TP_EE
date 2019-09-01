@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/edit/'+article._id)
+  form(method='POST', action='/articles/edit/'+article._id )
     #form-group
       label Title:
       input.form-control(name='title', type='text', value=article.title)
@@ -17,16 +17,15 @@ block content
     #form-group
         label Features:
         br
-        input(type='checkbox' name='feature1' value = 'Elevator' )
+        input(type='checkbox' name='feature1')
         | Elevator
         br
-        input(type='checkbox' name='feature2' value='Balcony')
-        | Balcony
+        input(type='checkbox' name='feature2')        | Balcony
         br
         input(type='checkbox' name='feature3' value='Terrace')
         | Terrace
         br
-        input(type='checkbox' name='feature4' value='HandicapAcessible')
+        input(type='checkbox' name='feature4' value='HandicapAcessible' , checked=(true===false ? "checked" : undefined))
         | HandicapAcessible
     
     #form-group

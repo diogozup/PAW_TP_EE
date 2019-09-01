@@ -20,8 +20,9 @@ block content
         option(value='Madeira') Madeira
 
     #form-group
-      label MaxCapacity:
-      input.form-control(type='number' name='maxCapacity' min='1' max='16')
+        label MaxCapacity:
+        input.form-control(type='number' name='maxCapacity' min='1' max='16')
+    
     #form-group
         label Features:
         br
@@ -58,14 +59,12 @@ block content
         input(type='checkbox' name='premiumFeature6' value='Pool')
         | Pool
 
-        #form-group
-        label Premium Features:
+    #form-group
+        label Picture:
         br
         input(type='file' name='articleImage' )
 
 
 
-
-
-    br
-    input.btn.btn-primary(type='submit',value='Submit')
+        br
+        input.btn.btn-primary(type='submit',value='Submit')

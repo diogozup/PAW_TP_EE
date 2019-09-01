@@ -67,25 +67,10 @@ router.get('/add', ensureAuthenticated, function(req, res){
 // Add Submit POST Route
 router.post('/add', upload.single('articleImage') , function(req, res){
 
-// console.log(req.body);
-// console.log(req.file);
-// console.log(req);
-
   req.checkBody('title','Title is required').notEmpty();
   req.checkBody('body','description is required').notEmpty();
   req.checkBody('maxCapacity','Max Occupation Capacity is required').notEmpty();
   req.checkBody('regions','Region is required').notEmpty();
-  
-
-//   req.checkBody('checkIn','Check-In is required').notEmpty();
-//   req.checkBody('checkOut','Check-Out is required').notEmpty();
-//   req.checkBody('articleImage','Image is required').notEmpty();
-
-
-
-
-
-  
 
   // Get Errors
   let errors = req.validationErrors();
@@ -106,20 +91,21 @@ router.post('/add', upload.single('articleImage') , function(req, res){
 
     article._id = mongoose.Types.ObjectId();
     article.booking = req.body.bookingId;
-
     article.author = req.user._id;
-
-
     article.title = req.body.title;    
     article.body = req.body.body;
     article.maxCapacity = req.body.maxCapacity
-
     article.regions = req.body.regions
+    article.articleImage =  req.file.path
+
+    article.features = req.body.features
+    article.premiumFeatures = req.body.premiumFeatures
 
     article.feature1 = req.body.feature1
     article.feature2 = req.body.feature2
     article.feature3 = req.body.feature3
     article.feature4 = req.body.feature4
+    
 
     article.premiumFeature1 = req.body.premiumFeature1
     article.premiumFeature2 = req.body.premiumFeature2
@@ -127,9 +113,7 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.premiumFeature4 = req.body.premiumFeature4
     article.premiumFeature5 = req.body.premiumFeature5
     article.premiumFeature6 = req.body.premiumFeature6
-
-    article.articleImage =  req.file.path
-
+    
    
 
     article.save(function(err){
@@ -143,6 +127,7 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     });
   }
 });
+
 
 // Load Edit Form
 router.get('/edit/:id', ensureAuthenticated, function(req, res){
@@ -158,7 +143,7 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
   });
 });
 
-// Update Submit POST Route
+// Post Updated Edit Form
 router.post('/edit/:id', function(req, res){
   let article = {};
   article.title = req.body.title;
@@ -168,10 +153,16 @@ router.post('/edit/:id', function(req, res){
 
   article.regions = req.body.regions
 
+
+
   article.feature1 = req.body.feature1
   article.feature2 = req.body.feature2
   article.feature3 = req.body.feature3
   article.feature4 = req.body.feature4
+
+  article.features = req.body.features
+  article.premiumFeatures = req.body.premiumFeatures
+
 
   article.premiumFeature1 = req.body.premiumFeature1
   article.premiumFeature2 = req.body.premiumFeature2
