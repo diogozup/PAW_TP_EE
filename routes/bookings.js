@@ -27,7 +27,7 @@ router.get('/add/:id', ensureAuthenticated , function(req, res){
 // POST add booking references articles
 router.post('/add/:id', function(req, res){
 
-    console.log("BODY DESTE ADD BOOKING:");
+    console.log("BODY DESTE ADD BOOKING DO FORMULARIO:");
     console.log(req.body);
     // Get Errors
     let errors = req.validationErrors();
@@ -58,8 +58,12 @@ router.post('/add/:id', function(req, res){
         booking.premiumFeature6 = req.body.premiumFeature6 
 
         booking.status = req.body.status
-        booking.featuresTotalPrice = req.body.featuresTotalPrice
-        booking.premiumFeaturesTotalPrice = req.body.premiumFeaturesTotalPrice
+        booking.bookingImage = req.body.bookingImage
+
+
+        
+        booking.premiumFeaturesTotalPrice = req.body.totalCost
+    
         booking.finalTotalPrice = req.body.finalTotalPrice
         
 

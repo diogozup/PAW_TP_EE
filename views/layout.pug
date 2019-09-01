@@ -20,14 +20,12 @@ html
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='/') Accomodations
+          if user 
+            a.navbar-brand(href='/bookings/show/allBookings') Bookings
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            //- li
-            //-   a(href='/') Home
             li
             if user                
-                //- li
-                //-     a(href='/') Accomodations
                 li
                     a(href='#') _______________________________________________________________________________________________________________________________________
                 li
@@ -35,15 +33,7 @@ html
                 li
                     a(href='/articles/show/myAccomodations') My Accomodations                                                              
                 li
-                    a(href='/bookings/show/myAccomodations/BookingRequests') Offers(All)
-                li
-                    a(href='/bookings/show/myAccomodations/BookingRequestsAccepted') Offers(Accepted)
-                li
-                    a(href='/bookings/show/myAccomodations/BookingRequestsPending') Offers(Pending)
-                li
-                    a(href='#') _________________________________________________________________________________________________________________________________________________        
-                li
-                    a(href='/bookings/show/allBookings') Bookings
+                    a(href='/bookings/show/myAccomodations/BookingRequests') My Offers
 
                 li
                     a(href='/bookings/myBookings') My Bookings

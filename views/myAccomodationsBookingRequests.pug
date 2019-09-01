@@ -12,4 +12,32 @@ block content
                     if booking.authorArticle == article.id
                         li.list-group-item
                             a(href="/bookings/show/"+booking._id)= booking.title                      
-
+    
+    h1 My Pending Booking Offers
+    //#{title}
+    ul.list-group
+        each article, i in articles
+            if user.id == article.author
+                each booking, i in bookings
+                    if booking.authorArticle == article.id
+                        if booking.status == "1"
+                            li.list-group-item
+                                a(href="/bookings/show/makeDecision/"+booking._id)= booking.title
+    br
+    h1 My Accepted Booking Offers
+    //#{title}
+    ul.list-group
+        each article, i in articles
+            if user.id == article.author
+                each booking, i in bookings
+                    if booking.authorArticle == article.id
+                        if booking.status == "2"
+                            li.list-group-item
+                                a(href="/bookings/show/"+booking._id)= booking.title                   
+    br
+    br 
+    br
+    br 
+    br
+    br 
+                                                                                           

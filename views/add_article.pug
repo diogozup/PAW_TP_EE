@@ -39,32 +39,36 @@ block content
         | Handicap Friendly
     
     #form-group
-        label Premium Features:
-        br
-        input(type='checkbox' name='premiumFeature1' value='10')
-        | Wifi
-        br
-        input(type='checkbox' name='premiumFeature2' value='10')
-        | Air Conditioning
-        br
-        input(type='checkbox' name='premiumFeature3' value='10')
-        | Fire Wood
-        br
-        input(type='checkbox' name='premiumFeature4' value='10')
-        | Telephone
-        br
-        input(type='checkbox' name='premiumFeature5' value='10')
-        | Cable TV Premium Serice
-        br
-        input(type='checkbox' name='premiumFeature6' value='10')
-        | Pool
+        fieldset
+            p
+                #premiumFeaturesGroup
+                    label Premium Features:
+                    br
+                    input(type='checkbox' name='premiumFeature1' value='10')
+                    | Wifi
+                    br
+                    input(type='checkbox' name='premiumFeature2' value='10')
+                    | Air Conditioning
+                    br
+                    input(type='checkbox' name='premiumFeature3' value='10')
+                    | Fire Wood
+                    br
+                    input(type='checkbox' name='premiumFeature4' value='10')
+                    | Telephone
+                    br
+                    input(type='checkbox' name='premiumFeature5' value='10')
+                    | Cable TV Premium Serice
+                    br
+                    input(type='checkbox' name='premiumFeature6' value='10')
+                    | Pool
+
 
     #form-group
         label Picture:
         br
         input(type='file' name='articleImage' )
 
-
+ 
 
         br
         input.btn.btn-primary(type='submit',value='Submit')

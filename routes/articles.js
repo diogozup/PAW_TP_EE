@@ -100,7 +100,8 @@ router.post('/add', upload.single('articleImage') , function(req, res){
 
     article.features = req.body.features
     
-
+            //- li
+            //-   a(href='/') Home
     article.premiumFeature1 = req.body.premiumFeature1
     article.premiumFeature2 = req.body.premiumFeature2
     article.premiumFeature3 = req.body.premiumFeature3
