@@ -13,7 +13,7 @@ let articleSchema = mongoose.Schema ({
   articleImage:{ type: String, require: true },
 
   createdAt:{ type: Date, default: Date.now },
-  lasteditedAt:{ type: Date },
+  lastEditedAt:{ type: Date },
  
 
   
@@ -27,12 +27,16 @@ let articleSchema = mongoose.Schema ({
 //   premiumFeaturePrice5:{ type: Number, default: 0 },
 //   premiumFeaturePrice6:{ type: Number, default: 0 },
 
-  dayPrice:{type: Number, default: 0 },
+  pricePerStay:{type: Number, default: 0 },
+  totalEarnedOfBookings:{type: String },
+  totalEarnedOfAllTime:{type: Number, default: 0 },  
+
+
 
 
   features:{ type: String },
   premiumFeatures:{ type: String },
-  premiumFeaturesPrice:{ type: Number, default: 0 },
+
 
   premiumFeature1:{ type: String },
   premiumFeature2:{ type: String },

@@ -1,60 +1,104 @@
 extends layout
 
 block content
-    h3 Title: #{booking.title}
-
+    h1 Booking: #{booking.title}
     br
-    h4 Check-In:
-    p= booking.checkIn
-    h4 Check-Out:
-    p= booking.checkOut
+    //- h3 Pic
+    //- img.className#IdName(src= '/' + article.articleImage alt="Image devia tar aqui" style='width:350px; height:300px;' )
     br
-    h4 Features:
-    p= booking.feature1
-    p= booking.feature2
-    p= booking.feature3
-    p= booking.feature4
+    strong Check-In:
+    |  #{booking.checkIn}
+    br
+    strong Check-Out:
+    |  #{booking.checkOut}
+    br
+    //- h4 Features: 
+    //- p= booking.features
     
-    h4 Premium Features:
-    p= booking.premiumFeature1
-    p= booking.premiumFeature2
-    p= booking.premiumFeature3
-    p= booking.premiumFeature4
-    p= booking.premiumFeature5
-    p= booking.premiumFeature6
+    br
+    br
+    h2 Price Details:
+    strong Number of Days Booked:
+    |  #{booking.numberOfStayingDays}
+    br
+    strong Accomodation Cost:
+    |  #{booking.totalStayingCost}€
+    br
+    strong Premium Features Cost:
+    |  #{booking.totalPremiumFeatures}€
+    br
+    br
+    strong Total Cost:
+    |  #{booking.totalPremiumFeatures}€
     
     br
     br
     hr
     a.btn.btn-default(href='statusUpdate/'+booking.id) Make Decision
+ 
 
-    br
-    br
-    br    
-    br
-    br    
-    br
-    br    
-    br
-    br    
-    br
-    br    
-    br
-    br    
-    br
 
-    hr
-    h7 userID: #{booking.author}
-    br
-    h7 accomodationID: #{booking.authorArticle}
-    br
-    h7 status historic: #{booking.status}
-    br
-    h8 status: 0 = Booking Request Declined by owner
-    br
-    h8 status: 1 = Booking Request Pending 
-    br
-    h8 status: 2 = Booking Request Accepted by owner
-    br
-    br
+
+
+//-     br
+//-     br
+//-     br
+//-     h5 Booked at: 
+//-     p= booking.createdAt
+    
+    
+    
+    
+//-     extends layout
+
+//- block content
+//-     h3 Title: #{booking.title}
+
+//-     br
+//-     h4 Check-In:
+//-     p= booking.checkIn
+//-     h4 Check-Out:
+//-     p= booking.checkOut
+//-     br
+    
+//-     h4 Features:
+
+    
+//-     h4 Premium Features:
+
+    
+//-     br
+//-     br
+//-     hr
+//-     a.btn.btn-default(href='statusUpdate/'+booking.id) Make Decision
+
+//-     br
+//-     br
+//-     br    
+//-     br
+//-     br    
+//-     br
+//-     br    
+//-     br
+//-     br    
+//-     br
+//-     br    
+//-     br
+//-     br    
+//-     br
+
+//-     hr
+//-     h7 userID: #{booking.author}
+//-     br
+//-     h7 accomodationID: #{booking.authorArticle}
+//-     br
+//-     h7 status historic: #{booking.status}
+//-     br
+//-     h8 status: 0 = Booking Request Declined by owner
+//-     br
+//-     h8 status: 1 = Booking Request Pending 
+//-     br
+//-     h8 status: 2 = Booking Request Accepted by owner
+//-     br
+//-     br
     

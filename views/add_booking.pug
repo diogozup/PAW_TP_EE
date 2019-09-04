@@ -6,28 +6,29 @@ block content
 
     #form-group
         label Title:
-        input.form-control(name='title', type='text')
-        br
+        input.form-control(name='title' type='text' )
+        p
 
     #form-group
         label Booking:
-        br
+        br 
         input(type='date' name='checkIn' id='checkIn')
         | CheckIn
         br
         input(type='date' name='checkOut' id='checkOut')
         | CheckOut
         br
-        label Total of Stays: 
+        input(type='button' name='buttonDates' value='Confirm Dates' onclick= 'datee()')
+        input(type='hidden' id='diffDays' name='totalOfStayDays' readonly='readonly'  placeholder='Days' style='text-align:right')
         br
-        input(type='button' name='totalOfDays' value="click" onclick= 'datee()')
+        //- strong Price per Stay: 
+        //- |  #{article.pricePerStay}
+        //- br
         br
-        label Price per Stay:
-        br
-        input(type='number' name='dayPrice' , value= article.dayPrice ,readonly='readonly')
-
-
-
+        label Total Staying Cost €:
+        br 
+        input(type='number' id='totalStayingCost' name='totalStayingCost' readonly='readonly'  placeholder="" )
+        p
 
 
 
@@ -37,64 +38,58 @@ block content
 
             label Premium Features:
             br
-            input(type='checkbox' id='myPremiumFeaturePrice1' name='premiumFeature1' value='{preco:999,nome:WIFI}')
+            input(type='checkbox' id='myPremiumFeaturePrice1' name='premiumFeature1' value='{"preco":"05" , "nome":"WIFI"}')
             | Wifi - 05.00€
             br
-            input(type='checkbox' id='myPremiumFeaturePrice2' name='premiumFeature2' value='{preco:100,nome:AC}')
+            input(type='checkbox' id='myPremiumFeaturePrice2' name='premiumFeature2' value='{"preco":"42","nome":"AC"}')
             | Air Conditioning - 42.00€
             br
-            input(type='checkbox' id='myPremiumFeaturePrice3' name='premiumFeature3' value='{preco:98,nome:firewood}')
+            input(type='checkbox' id='myPremiumFeaturePrice3' name='premiumFeature3' value='{"preco":"33","nome":"firewood"}')
             | Fire Wood - 33.00€
             br
-            input(type='checkbox' id='myPremiumFeaturePrice4' name='premiumFeature4' value='{preco:98,nome:telephone}')
+            input(type='checkbox' id='myPremiumFeaturePrice4' name='premiumFeature4' value='{"preco":"11","nome":"telephone"}')
             | Telephone - 11.00€
             br
-            input(type='checkbox' id='myPremiumFeaturePrice5' name='premiumFeature5' value='{preco:98,nome:TV}')
+            input(type='checkbox' id='myPremiumFeaturePrice5' name='premiumFeature5' value='{"preco":"27","nome":"TV"}')
             | Cable TV Premium Serice - 27.00€
             br
-            input(type='checkbox' id='myPremiumFeaturePrice6' name='premiumFeature6' value='{preco:98,nome:pool}')
+            input(type='checkbox' id='myPremiumFeaturePrice6' name='premiumFeature6' value='{"preco":"120","nome":"pool"}')
             | Pool - 120.00€
             br
             p.total-cost
-            label Total Cost:
+            label Total Features Cost €:
             br
-            input.total-cost(type='text', name='total-cost', value='05', readonly='readonly')
+            input.total-cost(type='text' name='total-cost' readonly='readonly', value='00' )
+            input.form-control(type='hidden' id='totalCost' name='totalCost' value='0' )
 
 
-            input.form-control(type='hidden' name='totalCost' , value='')
+        br
+        br
+        br
+        br
+        br
+        label FINAL BOOKING TOTAL:
+        br
+        input(type='number' id='totalFinalCost' name='totalFinalCost' , value='0', readonly='readonly')
+        br
+        br
+
+        //- Hidden Fields
+        input.form-control(type='hidden' name='status' , value='1')
+        input(type='hidden' name='createdAt' value= Date() )       
+
+        
+        input.btn.btn-primary(type='submit',value='Submit')
 
 
-            input.form-control(type='hidden' name='status' , value='1')
-            input.form-control(type='hidden' name='features' , value=article.features)
-            input.form-control(type='hidden' name='bookingImage' , value=article.articleImage)
-            input(type='hidden' name='createdAt' value= Date() )
-
-            br
-            br
-            br
-            br
-            br
-            label TOTAL:
-            br
-
-
-
-
-    br
-    input.btn.btn-primary(type='submit',value='Submit')
-
-
-
-    
     
     script.
-
-
         function parseDate(s) {
             var b = s.split(/\D/);
             return new Date(b[0], --b[1], b[2]);
         }
 
+        //---------------------------------------------------------------------------------
         function datee() {
             checkIn = parseDate(document.getElementById("checkIn").value) ;
             checkOut = parseDate(document.getElementById("checkOut").value);
@@ -102,12 +97,34 @@ block content
             const diffTime = Math.abs(checkOut.getTime() - checkIn.getTime());
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
 
+            document.getElementById("diffDays").value = diffDays;
 
-            console.log(diffDays);
-            alert(diffDays);
+            // parse price per stay
+            precoPorDia = #{article.pricePerStay};
+            pricePerStay = parseFloat(precoPorDia);
+            
+
+            // give value to price of staying
+            var totalStayingCost =  diffDays * pricePerStay;
+            document.getElementById('totalStayingCost').value = totalStayingCost;
+
+        }
+        
+        //---------------------------------------------------------------------------------
+        function calculatePrices() {
+
+            var stayingDays = document.getElementById('diffDays').value;
+            
+            var pricePerday = article.pricePerStay;
+            var totalStayingCost = pricePerday * stayingDays;
+            
+            document.getElementById('totalStayingCost').value = totalStayingCost ;
         }
 
-    
+
+        
+
+        //---------------------------------------------------------------------------------
         function formatDate (input) {
             var datePart = input.match(/\d+/g),
             year = datePart[0].substring(2), // get only two digits
@@ -115,16 +132,9 @@ block content
             return day+'/'+month+'/'+year;
         }
 
-
-
-
+        //---------------------------------------------------------------------------------
         function calculateCheckbox() {
-            //- document.getElementById("myPremiumFeaturePrice1").value = "5";
-            //- document.getElementById("myPremiumFeaturePrice2").value = "42";
-            //- document.getElementById("myPremiumFeaturePrice3").value = "33";
-            //- document.getElementById("myPremiumFeaturePrice4").value = "11";
-            //- document.getElementById("myPremiumFeaturePrice5").value = "27";
-            //- document.getElementById("myPremiumFeaturePrice6").value = "120";
+
             
             // get beauty products checkboxes contianer's reference
             var el = document.getElementById('premiumFeaturesGroup') ;
@@ -150,12 +160,24 @@ block content
             var myForm = this.form;
         
             // include current value in total-cost block, use parseFloat method to convert string to number
+
+
+
+
             var val = parseFloat(myForm.elements['total-cost'].value);
 
-
+            
 
             // Add the checkbox value to total value if checkbox is checked
             if (this.checked) {
+            
+            // save value before parsing
+            var valueBeforParsing = this.value;
+
+            // get only the single field in value
+            var a = JSON.parse(this.value);
+            this.value = a.preco;
+
             val += parseFloat(this.value);
             } else {
             val -= parseFloat(this.value);
@@ -164,9 +186,45 @@ block content
             // update total-cost value with latest value
             myForm.elements['total-cost'].value = val
             myForm.elements['totalCost'].value = val
-            myForm.elements['pricePerStay'].value = article.dayPrice
-        }
-        
+            
+            // Return the original this.value
+            this.value = valueBeforParsing;
 
-        // call calculateCheckbox method
-        //calculateCheckbox();
+            a = document.getElementById('totalStayingCost').value;
+            b = JSON.parse(a);
+            //- alert(b);
+
+            var totalFinal = b + val;
+            document.getElementById('totalFinalCost').value = totalFinal;
+    
+
+
+       }        
+
+
+        //---------------------------------------------------------------------------------
+        function displayPricePerStay() {
+            document.getElementById("totalStayingCost").placeholder = " Price per stay: #{article.pricePerStay}" ;
+
+        }
+
+        //---------------------------------------------------------------------------------
+        function displayFinalTotalCost() {
+
+            var totalStaying  = document.getElementById('totalCostFeatures').value;
+            var totalFeatures = document.getElementById('totalCost').value;
+
+            var totalFinal = totalStaying + totalFeatures;
+            document.getElementById('totalFinalCost').value = totalFinal;
+        }
+
+        //------------------------------ CALLED METHODS -----------------------------------
+        displayPricePerStay();
+        calculateCheckbox();
+
+
+
+        //-------------------------------- EOF --------------------------------------------
+        //---------------------------------------------------------------------------------
+
+        

@@ -2,10 +2,56 @@ extends layout
 
 
 block content
-  h1 My Bookings
-  //#{title}
-  ul.list-group
-    each booking, i in bookings
-        if user.id == booking.author
-            li.list-group-item
-                a(href="/bookings/show/"+booking._id)= booking.title              
+    h1 My Booking Offers
+    br
+    br
+
+    h3 Pending Booking Offers
+    ul.list-group
+        each booking, i in bookings
+            if user.id == booking.author
+                if booking.status == "1"
+                    li.list-group-item
+                        a(href="/bookings/show/"+booking._id)= booking.title    
+                            br
+    br
+    br
+    h3 Accpeted Booking Offers
+    ul.list-group
+        each booking, i in bookings
+            if user.id == booking.author
+                if booking.status == "2"
+                    li.list-group-item
+                        a(href="/bookings/show/"+booking._id)= booking.title    
+                            br
+    br
+    br
+    h3 Denied Booking Offers
+    ul.list-group
+        each booking, i in bookings
+            if user.id == booking.author
+                if booking.status == "0"
+                    li.list-group-item
+                        a(href="/bookings/show/"+booking._id)= booking.title                
+    
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    small historic
+    //#{title}
+    ul.list-group
+        each booking, i in bookings
+            if user.id == booking.author
+                li.list-group-item
+                    a(href="/bookings/show/"+booking._id)= booking.title

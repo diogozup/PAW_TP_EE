@@ -29,6 +29,10 @@ block content
       input.form-control(type='number' name='maxCapacity' min='1' max='16', value=article.maxCapacity)
     
     #form-group
+      label Price per Stay:
+      input.form-control(type='number' name='pricePerStay' , value=article.pricePerStay)
+
+    #form-group
         label Features:
         br
         input(type='checkbox' name='features' value='Elevator')
@@ -69,6 +73,12 @@ block content
 
     #form-group
         input.form-control(type='hidden' name='features' , value=article.features)
+        input(type='hidden' name='articleImage' value= article.articleImage )
+        
+
+        input(type='hidden' name='lastEditedAt' value= Date() )
+        input(type='hidden' name='totalEarnedOfAllTime' value= article.totalEarnedOfAlltime )
+
 
 
     br

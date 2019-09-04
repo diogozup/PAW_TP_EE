@@ -83,11 +83,6 @@ router.post('/add', upload.single('articleImage') , function(req, res){
   } else {
     let article = new Article();
     
-    console.log(req.file);
-    console.log("REQ BODY EM BAIXO:");
-    console.log(req.body);
-    // Booking.findById(req.body.bookingId)
-    
 
     article._id = mongoose.Types.ObjectId();
     article.booking = req.body.bookingId;
@@ -96,10 +91,11 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.body = req.body.body;
     article.maxCapacity = req.body.maxCapacity
     article.regions = req.body.regions
+    article.createdAt = req.body.createdAt
     article.articleImage =  req.file.path
 
     article.features = req.body.features
-    
+
     article.premiumFeature1 = req.body.premiumFeature1
     article.premiumFeature2 = req.body.premiumFeature2
     article.premiumFeature3 = req.body.premiumFeature3
@@ -107,9 +103,11 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     article.premiumFeature5 = req.body.premiumFeature5
     article.premiumFeature6 = req.body.premiumFeature6
     
-    article.createdAt = req.body.createdAt
+    article.pricePerStay = req.body.pricePerStay
 
-    article.dayPrice = req.body.dayPrice
+    article.totalEarnedOfBookings = req.body.totalEarnedOfBookings
+    article.totalEarnedOfAlltime = req.body.totalEarnedOfAlltime
+
 
     article.save(function(err){
       if(err){
@@ -157,6 +155,11 @@ router.post('/edit/:id', function(req, res){
   article.premiumFeature4 = req.body.premiumFeature4
   article.premiumFeature5 = req.body.premiumFeature5
   article.premiumFeature6 = req.body.premiumFeature6
+
+  article.lastEditedAt = req.body.lastEditedAt
+
+
+  
 
 
   let query = {_id:req.params.id}

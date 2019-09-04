@@ -3,16 +3,14 @@ extends layout
 block content
   h1 Accomodation: #{article.title}
   br
-  br
-  h2 Photo
   img.className#IdName(src= '/' + article.articleImage alt="Image Title" style='width:350px; height:300px;' )
   br
   h6 Owned by #{author}
   br
   h3 Region: #{article.regions}
   h4 Address: #{article.body}
-  h4 Max Capacity: #{article.maxCapacity}
-  h4 Price per Stay: #{article.dayPrice}
+  h4 Max Capacity: #{article.maxCapacity} adults
+  h4 Price per Stay: #{article.pricePerStay} €
   br
   h3 Features:
   p= article.features

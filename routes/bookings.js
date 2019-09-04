@@ -27,8 +27,9 @@ router.get('/add/:id', ensureAuthenticated , function(req, res){
 // POST add booking references articles
 router.post('/add/:id', function(req, res){
 
-    // console.log("BODY DESTE ADD BOOKING DO FORMULARIO:");
-    // console.log(req.body);
+    console.log("BODY DESTE ADD BOOKING DO FORMULARIO:");
+    console.log(req.body);
+
     // Get Errors
     let errors = req.validationErrors();
   
@@ -39,16 +40,15 @@ router.post('/add/:id', function(req, res){
       });
     } else {
 
-      let booking = new Booking();
+        let booking = new Booking();
+        
         booking.title = req.body.title  
 
         booking.author = req.user._id;
         booking.authorArticle = req.params.id;
-
         booking.checkIn = req.body.checkIn
         booking.checkOut = req.body.checkOut
 
-   
         booking.features = req.body.features
    
         booking.premiumFeature1 = req.body.premiumFeature1
@@ -58,22 +58,20 @@ router.post('/add/:id', function(req, res){
         booking.premiumFeature5 = req.body.premiumFeature5
         booking.premiumFeature6 = req.body.premiumFeature6 
 
-        console.log(JSON.stringify(booking) );
-        console.log(req.body.premiumFeature2 );
-        console.log(req.body.premiumFeature3 );
+    
 
         booking.status = req.body.status
-        booking.bookingImage = req.body.bookingImage
+        //booking.bookingImage = req.body.bookingImage
         booking.createdAt = req.body.createdAt
 
         
         //PRICES
-        booking.dayPrice = req.body.dayPrice
+        booking.numberOfStayingDays = req.body.totalOfStayDays
+        booking.pricePerStay = req.body.pricePerStay
 
-        booking.premiumFeaturesTotalPrice = req.body.totalCost
-    
-        booking.finalTotalPrice = req.body.finalTotalPrice
-        
+        booking.totalPremiumFeatures = req.body.totalCost
+        booking.totalStayingCost =  req.body.totalStayingCost
+        booking.totalFinalCost = req.body.totalFinalCost
 
 
 

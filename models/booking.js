@@ -22,18 +22,20 @@ let bookingSchema = mongoose.Schema({
     premiumFeature6:{ type: String },
 
     // PRICES
-    premiumFeaturesTotalPrice:    { type: Number , default : 0 },
-    dayPrice:                     { type: Number , default : 0 },
-    totalStayPrice:               { type: Number , default : 0 },
-    totalBookingPrice:            { type: Number , default : 0 },
-    totalOfDays:                  { type: Number , default : 0 },
+    numberOfStayingDays:    { type: Number , default : 0 },
+    pricePerStay:    { type: Number , default : 0 },
+    
+    totalPremiumFeatures:    { type: Number , default : 0 },
+    totalStayingCost:    { type: Number , default : 0 },
+    totalFinalCost:    { type: Number , default : 0 },
+
 
     
     
 
-    status:{ type: String, default: 1 },
+    status:{ type: String, default: 1 }
 
-    bookingImage:{ type: String }
+    
 
 });
 

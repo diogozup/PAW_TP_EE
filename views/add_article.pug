@@ -24,7 +24,7 @@ block content
         input.form-control(type='number' name='maxCapacity' min='1' max='16')
     #form-group
         label Price per stay:
-        input.form-control(type='number' name='dayPrice' value='dayPrice')
+        input.form-control(type='number' name='pricePerStay' )
 
     #form-group
         label Features:
@@ -72,8 +72,8 @@ block content
         input(type='file' name='articleImage' )
 
         input(type='hidden' name='createdAt' value= Date() )
-        
-
+        input(type='hidden' name='totalEarnedOfBookings' value= '0' )
+        input(type='hidden' name='totalEarnedOfAllTime' value= 0 )
 
         br
         input.btn.btn-primary(type='submit',value='Submit')
