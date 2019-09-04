@@ -22,7 +22,10 @@ block content
     #form-group
         label MaxCapacity:
         input.form-control(type='number' name='maxCapacity' min='1' max='16')
-    
+    #form-group
+        label Price per stay:
+        input.form-control(type='number' name='dayPrice' value='dayPrice')
+
     #form-group
         label Features:
         br
@@ -62,13 +65,15 @@ block content
                     input(type='checkbox' name='premiumFeature6' value='Pool')
                     | Pool - 120.00€
 
-
+    
     #form-group
         label Picture:
         br
         input(type='file' name='articleImage' )
 
         input(type='hidden' name='createdAt' value= Date() )
+        
+
 
         br
         input.btn.btn-primary(type='submit',value='Submit')

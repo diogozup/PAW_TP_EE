@@ -109,6 +109,8 @@ router.post('/add', upload.single('articleImage') , function(req, res){
     
     article.createdAt = req.body.createdAt
 
+    article.dayPrice = req.body.dayPrice
+
     article.save(function(err){
       if(err){
         console.log(err);

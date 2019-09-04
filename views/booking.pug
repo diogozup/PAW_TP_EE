@@ -11,18 +11,16 @@ block content
     h4 Check-Out:
     p= booking.checkOut
     br
-    h4 Features:
+    h4 Features: 
     p= booking.features
-
     
-    h4 Premium Features :
-    p= booking.premiumFeature1
-    p= booking.premiumFeature2
-    p= booking.premiumFeature3
-    p= booking.premiumFeature4
-    p= booking.premiumFeature5
-    p= booking.premiumFeature6
+    br
+    h4 Premium Features Total Cost: #{ booking.premiumFeaturesTotalPrice}€
     
+    
+    br
+    br
+    br
     h5 Created At: 
     p= booking.createdAt
     br

@@ -27,8 +27,8 @@ router.get('/add/:id', ensureAuthenticated , function(req, res){
 // POST add booking references articles
 router.post('/add/:id', function(req, res){
 
-    console.log("BODY DESTE ADD BOOKING DO FORMULARIO:");
-    console.log(req.body);
+    // console.log("BODY DESTE ADD BOOKING DO FORMULARIO:");
+    // console.log(req.body);
     // Get Errors
     let errors = req.validationErrors();
   
@@ -38,6 +38,7 @@ router.post('/add/:id', function(req, res){
         errors:errors
       });
     } else {
+
       let booking = new Booking();
         booking.title = req.body.title  
 
@@ -57,11 +58,18 @@ router.post('/add/:id', function(req, res){
         booking.premiumFeature5 = req.body.premiumFeature5
         booking.premiumFeature6 = req.body.premiumFeature6 
 
+        console.log(JSON.stringify(booking) );
+        console.log(req.body.premiumFeature2 );
+        console.log(req.body.premiumFeature3 );
+
         booking.status = req.body.status
         booking.bookingImage = req.body.bookingImage
-
         booking.createdAt = req.body.createdAt
+
         
+        //PRICES
+        booking.dayPrice = req.body.dayPrice
+
         booking.premiumFeaturesTotalPrice = req.body.totalCost
     
         booking.finalTotalPrice = req.body.finalTotalPrice

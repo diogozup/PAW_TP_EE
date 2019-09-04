@@ -19,13 +19,20 @@ let articleSchema = mongoose.Schema ({
   
 
 
-  premiumFeaturePrice:{ type: Number, default: 0 },
-  nightPrice:{type: Number, default: 0 },
-  totalEarned:{ type: Number, default: 0 },
+  
+//   premiumFeaturePrice1:{ type: Number, default: 0 },
+//   premiumFeaturePrice2:{ type: Number, default: 0 },
+//   premiumFeaturePrice3:{ type: Number, default: 0 },
+//   premiumFeaturePrice4:{ type: Number, default: 0 },
+//   premiumFeaturePrice5:{ type: Number, default: 0 },
+//   premiumFeaturePrice6:{ type: Number, default: 0 },
+
+  dayPrice:{type: Number, default: 0 },
+
 
   features:{ type: String },
   premiumFeatures:{ type: String },
-
+  premiumFeaturesPrice:{ type: Number, default: 0 },
 
   premiumFeature1:{ type: String },
   premiumFeature2:{ type: String },
