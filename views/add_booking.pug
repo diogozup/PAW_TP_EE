@@ -35,27 +35,33 @@ block content
     fieldset
         p
         #premiumFeaturesGroup
-
             label Premium Features:
             br
-            input(type='checkbox' id='myPremiumFeaturePrice1' name='premiumFeature1' value='{"preco":"05" , "nome":"WIFI"}')
-            | Wifi - 05.00€
-            br
-            input(type='checkbox' id='myPremiumFeaturePrice2' name='premiumFeature2' value='{"preco":"42","nome":"AC"}')
-            | Air Conditioning - 42.00€
-            br
-            input(type='checkbox' id='myPremiumFeaturePrice3' name='premiumFeature3' value='{"preco":"33","nome":"firewood"}')
-            | Fire Wood - 33.00€
-            br
-            input(type='checkbox' id='myPremiumFeaturePrice4' name='premiumFeature4' value='{"preco":"11","nome":"telephone"}')
-            | Telephone - 11.00€
-            br
-            input(type='checkbox' id='myPremiumFeaturePrice5' name='premiumFeature5' value='{"preco":"27","nome":"TV"}')
-            | Cable TV Premium Serice - 27.00€
-            br
-            input(type='checkbox' id='myPremiumFeaturePrice6' name='premiumFeature6' value='{"preco":"120","nome":"pool"}')
-            | Pool - 120.00€
-            br
+
+            #premiumF1
+                input(type='checkbox' id='myPremiumFeaturePrice1' name='premiumFeature1' value='{"preco":"05" , "nome":"WIFI"}' )
+                | Wifi - 05.00€
+                br
+            #premiumF2
+                input(type='checkbox' id='myPremiumFeaturePrice2' name='premiumFeature2' value='{"preco":"42","nome":"AC"}')
+                | Air Conditioning - 42.00€
+                br
+            #premiumF3
+                input(type='checkbox' id='myPremiumFeaturePrice3' name='premiumFeature3' value='{"preco":"33","nome":"firewood"}')
+                | Fire Wood - 33.00€
+                br
+            #premiumF4
+                input(type='checkbox' id='myPremiumFeaturePrice4' name='premiumFeature4' value='{"preco":"11","nome":"telephone"}')
+                | Telephone - 11.00€
+                br
+            #premiumF5
+                input(type='checkbox' id='myPremiumFeaturePrice5' name='premiumFeature5' value='{"preco":"27","nome":"TV"}')
+                | Cable TV Premium Serice - 27.00€
+                br
+            #premiumF6
+                input(type='checkbox' id='myPremiumFeaturePrice6' name='premiumFeature6' value='{"preco":"120","nome":"pool"}')
+                | Pool - 120.00€
+                br
             p.total-cost
             label Total Features Cost €:
             br
@@ -217,11 +223,46 @@ block content
             var totalFinal = totalStaying + totalFeatures;
             document.getElementById('totalFinalCost').value = totalFinal;
         }
+        //---------------------------------------------------------------------------------
+        function displayNullPremiumFeatures() {
 
+            a = "#{article.premiumFeature1}";
+            if(a == ""){
+                document.getElementById('premiumF1').style.display = "none";
+            }
+
+            a = "#{article.premiumFeature2}";
+            if(a == ""){
+                document.getElementById('premiumF2').style.display = "none";
+            }
+
+            a = "#{article.premiumFeature3}";
+            if(a == ""){
+                document.getElementById('premiumF3').style.display = "none";
+            }
+
+            a = "#{article.premiumFeature4}";
+            if(a == ""){
+                document.getElementById('premiumF4').style.display = "none";
+            }
+
+            a = "#{article.premiumFeature5}";
+            if(a == ""){
+                document.getElementById('premiumF5').style.display = "none";
+            }
+
+            a = "#{article.premiumFeature6}";
+            if(a == ""){
+                document.getElementById('premiumF6').style.display = "none";
+            }
+
+        }
         //------------------------------ CALLED METHODS -----------------------------------
+        //---------------------------------------------------------------------------------
         displayPricePerStay();
         calculateCheckbox();
-
+        displayNullPremiumFeatures();
+          
 
 
         //-------------------------------- EOF --------------------------------------------
