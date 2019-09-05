@@ -281,6 +281,22 @@ router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, 
     });
   });
 
+    //-------------------------------------------- ESTOU AQUI: DASHBOARD -----------------------------------
+
+
+    // Get all my bookings
+    router.get('/myDashboard',ensureAuthenticated, function(req, res){
+        Booking.find({}, function(err, bookings){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('myDashboard', {
+            title:'My Dashboard',
+            bookings: bookings
+            });
+        }
+        });
+    });
 
 
 
