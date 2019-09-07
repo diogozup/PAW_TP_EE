@@ -24,5 +24,8 @@ block content
     #form-group
       label Address:
       input.form-control(name='address',type='text')
+
+    input.form-control(name='createdAt',type='hidden', value=Date())
+    
     br
     input.btn.btn-primary(type='submit',value='Submit')

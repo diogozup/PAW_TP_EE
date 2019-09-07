@@ -21,6 +21,8 @@ router.post('/register', function(req, res){
   const password2 = req.body.password2;
   const NIF = req.body.NIF;
   const address = req.body.address;
+//  const createdAt = req.body.createdAt;
+
 
   req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('email', 'Email is required').notEmpty();
@@ -64,6 +66,7 @@ router.post('/register', function(req, res){
       username:username,
       password:password,
       NIF:NIF,
+    //   createdAt:createdAt,
       address:address
     });
 
@@ -107,6 +110,36 @@ router.get('/logout', function(req, res){
   req.flash('success', 'You are logged out');
   res.redirect('/users/login');
 });
+
+
+
+// Get Single user
+router.get('/:id', function(req, res){
+    User.findById(req.params.id, function(err, user){
+        res.render('user', {
+          title:'User details',  
+          user:user
+        });
+    });
+});
+
+// show all Users
+router.get('/show/allUsers', function(req, res){
+    User.find({}, function(err, users){
+      if(err){
+        console.log(err);
+      } else {
+        res.render('allUsers', {
+          title:'List All Users',
+          users:users
+        });
+      }
+    });
+  });
+
+
+
+
 
 module.exports = router;
 

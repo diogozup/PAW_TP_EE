@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    h1 #{title}
+    p
+    strong Username: 
+    | #{user.username}
+    br
+    
+    strong Name:
+    | #{user.name}
+    br
+    
+    
+    strong Email:
+    | #{user.email}
+    br
+        
+
+        
+    strong NIF:
+    | #{user.nif}
+    br
+    
+    strong Address:
+    | #{user.address}
+    br
+    
+    
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    small Password hashed: #{user.password}
+    br
+    small ID: #{user._id}
+
+    
+    

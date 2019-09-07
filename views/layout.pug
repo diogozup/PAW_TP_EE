@@ -22,6 +22,8 @@ html
           a.navbar-brand(href='/') Accomodations
           if user 
             a.navbar-brand(href='/bookings/show/allBookings') Bookings
+            a.navbar-brand(href='/users/show/allUsers') Users
+
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
@@ -38,7 +40,7 @@ html
                 li
                     a(href='/bookings/myBookings') My Bookings Requests
                 li
-                    a(href='/bookings/myDashboard') DASHBOARD
+                    a(href='/bookings/myDashboard/'+user.id) DASHBOARD
 
 
           ul.nav.navbar-nav.navbar-right

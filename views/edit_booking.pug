@@ -1,23 +1,21 @@
 extends layout
 
 block content
-  h1 Welcome #{user.username}! Feel free to place your reservation here.
-  small #{title} form 
-  p
-  form(method='POST', action='/bookings/add/'+article._id)
+  h1 #{title} of #{user.username}
+  form(method='POST', action='/bookings/edit/myBooking/WithBookingID/'+booking._id)
 
     #form-group
         label Title:
-        input.form-control(name='title' type='text' id='title' )
+        input.form-control(name='title' type='text' id='title')
         p
 
     #form-group
         label Booking:
         br 
-        input(type='date' name='checkIn' id='checkIn')
+        input(type='date' name='checkIn' id='checkIn' value=booking.checkIn)
         | CheckIn
         br
-        input(type='date' name='checkOut' id='checkOut')
+        input(type='date' name='checkOut' id='checkOut' value=booking.checkOut)
         | CheckOut
         br
         input(type='button' name='buttonDates' value='Confirm Dates' onclick= 'datee()')
@@ -130,10 +128,9 @@ block content
             document.getElementById('totalStayingCost').value = totalStayingCost ;
         }
 
-        //---------------------------------------------------------------------------------
-        function titleDefaultValeu(){
-            document.getElementById('title').value = "#{user.username} booked #{article.title} located at #{article.regions} ";
-        }        
+
+        
+
         //---------------------------------------------------------------------------------
         function formatDate (input) {
             var datePart = input.match(/\d+/g),
@@ -261,16 +258,18 @@ block content
             }
 
         }
+        function displayTitlePlaceholder() {
+            document.getElementById("title").placeholder = "Last Title: #{booking.title}";
 
+        }
 
-        
         //------------------------------ CALLED METHODS -----------------------------------
         //---------------------------------------------------------------------------------
         displayPricePerStay();
         calculateCheckbox();
         displayNullPremiumFeatures();
           
-        titleDefaultValeu();
+        displayTitlePlaceholder();
 
         //-------------------------------- EOF --------------------------------------------
         //---------------------------------------------------------------------------------

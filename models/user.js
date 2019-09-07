@@ -29,6 +29,11 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   }
+//   },
+//   createdAt:{
+//     type: date,
+//     default: date.now
+//   }
 });
 
 //ainda tenho que utilizar o error handler para isto dar

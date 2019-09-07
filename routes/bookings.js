@@ -210,7 +210,9 @@ router.post('/show/makeDecision/statusUpdate/:id', ensureAuthenticated, function
                     } else {
                         //res.send(updatedObject);
                         req.flash('success','Booking Status Updated');
-                        res.redirect('/');
+                         res.redirect('/');
+                        //res.redirect('/bookings/show/makeDecision/:id');
+                        
 
                     }
                 });
@@ -285,11 +287,28 @@ router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, 
 
 
     // Get all my bookings
-    router.get('/myDashboard',ensureAuthenticated, function(req, res){
-        Booking.find({}, function(err, bookings){
+    // router.get('/myDashboard',ensureAuthenticated, function(req, res){
+    //     Booking.find({}, function(err, bookings){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         res.render('myDashboard', {
+    //         title:'My Dashboard',
+    //         bookings: bookings
+    //         });
+    //     }
+    //     });
+    // });
+    // ,[],{ sort: { '_id': -1 } }
+    router.get('/myDashboard/:id',ensureAuthenticated, function(req, res){
+        Booking.find({'author':req.params.id}).sort({'_id': -1}).limit(3).exec(function(err, bookings){
         if(err){
             console.log(err);
         } else {
+            console.log("BOOKINGS:");
+            console.log(bookings);
+
+
             res.render('myDashboard', {
             title:'My Dashboard',
             bookings: bookings
@@ -297,6 +316,42 @@ router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, 
         }
         });
     });
+
+
+
+
+// Load Edit Form booking
+router.get('/edit/myBooking/WithBookingID/:idArticle/:idBooking', ensureAuthenticated, function(req, res){
+    Article.findById(req.params.idArticle, function(err, article){
+        Booking.findById(req.params.idBooking, function(err, booking){
+                if(booking.author != req.user._id){
+                    req.flash('danger', 'Not Authorized');
+                    res.redirect('/');
+                }
+                res.render('edit_booking', {
+                    title:'Edit Booking',
+                    booking:booking,
+                    article:article
+
+                });
+            });    
+        });
+  });    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

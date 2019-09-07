@@ -3,6 +3,7 @@ extends layout
 
 block content
     h1 My Booking Offers
+    small (bookings that i made to other accmds)
     br
     br
 
@@ -13,7 +14,7 @@ block content
                 if booking.status == "1"
                     li.list-group-item
                         a(href="/bookings/show/"+booking._id)= booking.title    
-                            br
+    br
     br
     br
     h3 Accpeted Booking Offers
@@ -23,7 +24,7 @@ block content
                 if booking.status == "2"
                     li.list-group-item
                         a(href="/bookings/show/"+booking._id)= booking.title    
-                            br
+    br
     br
     br
     h3 Denied Booking Offers
