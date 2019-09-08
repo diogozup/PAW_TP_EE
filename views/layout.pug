@@ -24,6 +24,7 @@ html
             a.navbar-brand(href='/bookings/show/allBookings') Bookings
             a.navbar-brand(href='/users/show/allUsers') Users
 
+
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
@@ -45,6 +46,9 @@ html
 
           ul.nav.navbar-nav.navbar-right
             if user
+              li 
+                a(href='/users/'+user._id) Welcome, #{user.username}
+
               li 
                 a(href='/users/logout') Logout
             else

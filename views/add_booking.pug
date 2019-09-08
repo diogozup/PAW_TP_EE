@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  h1 Welcome #{user.username}! Feel free to place your reservation here.
+  
+  h1 Place your reservation here. 
   small #{title} form 
   p
+  br
+  
   form(method='POST', action='/bookings/add/'+article._id)
 
     #form-group
@@ -23,13 +26,15 @@ block content
         input(type='button' name='buttonDates' value='Confirm Dates' onclick= 'datee()')
         input(type='hidden' id='diffDays' name='totalOfStayDays' readonly='readonly'  placeholder='Days' style='text-align:right')
         br
-        //- strong Price per Stay: 
-        //- |  #{article.pricePerStay}
-        //- br
         br
         label Total Staying Cost €:
         br 
         input(type='number' id='totalStayingCost' name='totalStayingCost' readonly='readonly'  placeholder="" )
+        //- br
+        //- br
+        //- label Maximum Occupation Capacity:
+        //- br 
+        //- input(type='number' id='maxOccup' name='maxOccupation' readonly='readonly' ' placeholder="maxOccupation")
         p
 
 
@@ -180,7 +185,7 @@ block content
 
             // Add the checkbox value to total value if checkbox is checked
             if (this.checked) {
-            
+            displayPricePerStay
             // save value before parsing
             var valueBeforParsing = this.value;
 
@@ -261,8 +266,20 @@ block content
             }
 
         }
+        
+        //- function displayMaxOccp(){
+        //-     alert("");
+            
+        //-     maxCapacity = #{article.maxCapacity};
+        //-     maxOcc = parseFloat(maxCapacity);
+            
+        //-     var max = maxOcc;
+        //-     //- alert(maxOcc);
+        //-     document.getElementById('maxOccup').value = max;
 
-
+            
+        //- }
+       
         
         //------------------------------ CALLED METHODS -----------------------------------
         //---------------------------------------------------------------------------------
@@ -272,6 +289,8 @@ block content
           
         titleDefaultValeu();
 
+        //- displayMaxoccp();
+        
         //-------------------------------- EOF --------------------------------------------
         //---------------------------------------------------------------------------------
 
