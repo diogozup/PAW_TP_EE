@@ -1,0 +1,116 @@
+#SUMMARY---------------------------------------------------------------------------
+    1.1- What does mean restfull
+    1.2- What tools i used for this project
+    1.3- Criar Lista de tarefas de como comecar 1 projeto de raiz 
+    1.4- START PROJECT RUNNING
+    1.5- VSCode stuff(atalhos keyboard + codigos conflito ports..) 
+    1.6- Create gitignore file 
+    1.7- Guardarprojetoemrepositorio GIT
+-----------------------------------------------------------------------------------
+1.1- What does mean restfull
+REST or RESTful API design (Representational State Transfer) is designed to take advantage of existing protocols. While REST can be used over nearly any protocol, it usually takes advantage of HTTP when used for Web APIs. ... REST API Design was defined by Dr. Roy Fielding in his 2000 doctorate dissertation.
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.2- What tools i used for this project
+1- Node with midleware Express.js w/:
+    -boostrap
+    -
+2- MongoDB for DBstorage and management
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.3- Criar Lista de tarefas de como comecar 1 projeto de raiz 
+1- Criar pasta com nome projeto
+-dentro dela no VSCodeTerminal:
+ -$npm init --yes
+ -$create files: (server.js + folders: ["models"+file(db.js)],"controllers","views")
+ (meter la codigo de iniciar app em "server")
+ -$npm i express 
+ -$sudo npm i -g nodemon
+ -$nodemon server
+ -(optional)$export PORT=5000
+ 
+-Using a BD in MONGODB:
+ -(IF NOT INSTALLED MONGO IN PC ALREADY) go to Linux_Term:
+    $sudo apt-get install mongodb
+    $sudo apt-get update
+    $sudo service mongo start
+    $mongo || $mongd , cant remember
+    $show db || show dbs , cant remember
+ -VSCodeTerm: $npm i mongoose --save
+ -VSCodeTerm: $npm i body-parser --save //this is very important module for bd usage
+ -VSCodeTerm: $mongod //START BD
+ -ABRIR MONGO COMPASS e CRIAR BD que vamos USAR
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.4- START PROJECT RUNNING
+-open VSCodeProj 
+-VSCodeTerm.1: $nodemon server
+-VSCodeTerm.2: $mongd ( a DB esta no root folder ja com permissoes: "/data/db")
+###NOTA:
+#Resposta para permissoes esta no comentario mais votado do StackOverflow a esta 
+questao em:
+
+https://stackoverflow.com/questions/7948789/mongod-complains-that-there-is-no-data-db-folder
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.5- VSCode stuff(atalhos keyboard + codigos conflito ports..) 
+\Case node port ja ocupado:
+ -check ProcessID in VSCodeTerm: $ps aux | grep node
+ -check ProcessID in VSCodeTerm: $lsof -i | grep node
+  -kill ProcessID in VSCodeTerm: $kill -9 12920 (PID = 12920 neste exemplo)
+\ctr + shift + 7
+ -Comment line/block
+\ctr + shift + I
+ -AutoFormat Code
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.6- Create gitignore file 
+1)No projecto no VSCodeTerm.3:
+    $git init      //inicializar git
+    $git status    //ver os estado
+2)No root do projeto criamos file ".gitignore" e editamos a linha1:
+    1| node_modules/
+3)Voltamos ao VSCodeTerm:
+    $git status     //revemos os files que temos para fazer commit e reparamos "node_modules" excluido
+    $git add .      //adiciona todos os files 
+    $git commit -m "Our 1st commit"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+1.7- Guardarprojetoemrepositorio GIT
+1)Depois de todos os pacos de 1.6 fazemos em VSCodeTerm:
+    $git status    //verificar se os documentos que fizemos commit ja nao aparecem listados
+    $git log       //ver se o commit ta prnto a enviar para repo (ate aqui so temos alteracoes na nossa maquina)
+
+2)Enviamos alteracoes feitas no nosso pc para o Repositorio criado:
+    $git push -u origin master     // e metemos credenciais da conta GIT
+
+3)(SE NAO TEMOS REPOSITORIO CRIADO TEMOS QUE CRIAR ASSIM):
+1\Ir a: https://github.com/
+    \login (diogozup + pw)
+2\Create Repository:
+    \https://github.com/new  // used in this example RepoName: "NodeExpressJS-MongoDB_CRUD"
+3\got the commands to "remote add origin" and "push -u origin" //"-u" significa upstream, ou seja, nao faz perguntas e aceita tdas alteracoes(acho eu..)
+4\Commands i got:
+(...)
+\VSCoderTerm: $git remote add origin https://github.com/diogozup/NodeExpressJS-MongoDB_CRUD.git
+\VSCoderTerm: $git push -u origin master
+\meter "diogozup" + "pw(hardone)"
+\\Close VSCodeTerm.3 and  !!!!!!!DONE !!!!!!!
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+EOF
+
+### Credenciai git
+diogozup
+hardone
+
+
+
+
+
+
+
+
+
+
+
+

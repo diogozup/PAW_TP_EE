@@ -252,6 +252,7 @@ router.get('/show/myAccomodations/BookingRequests', ensureAuthenticated, functio
 //  List MyAccomodations Booking Requests (accepted)
 router.get('/show/myAccomodations/BookingRequestsAccepted', ensureAuthenticated, function(req, res){
     Article.find({}, function(err, articles){
+        // Booking.find({'author':req.params.id}).sort({'_id': -1}).limit(1).exec(function(err, bookings){
         Booking.find({}, function(err, bookings){
         if(err){
             console.log(err);
@@ -269,7 +270,7 @@ router.get('/show/myAccomodations/BookingRequestsAccepted', ensureAuthenticated,
   //  List MyAccomodations Booking Requests (declined)
 router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, function(req, res){
     Article.find({}, function(err, articles){
-        Booking.find({}, function(err, bookings){
+       Booking.find({}, function(err, bookings){
         if(err){
             console.log(err);
         } else {
