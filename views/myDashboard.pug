@@ -11,12 +11,17 @@ block content
             link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
 
         body
-            title My Chart.js Chart
+            br
+            br
+            title My Dashboard
             .container
                 canvas#myChart
 
             .container
                 canvas#myChart2
+            
+            
+            br
             br
             br
             h3 TODAS OFFERS QUE FIZ
@@ -36,9 +41,9 @@ block content
                             li.list-group-item
                                 a(href="/bookings/show/"+booking._id)= booking.title
 
-            h3 DADOS AQUI:
-            br
-            p "#{JSON.stringify(bookings)}"
+            //- h3 DADOS AQUI:
+            //- br
+            //- p "#{JSON.stringify(bookings)}"
 
 
         
@@ -79,27 +84,33 @@ block content
             var modelData=[];  //total
             var modelData2=[]; //staying
             var modelData3=[]; //premium features
-            var modelData4=[]; //staying days
+            var modelData5=[]; //title
 
 
             for (var i=0; i< temp.length;i++){
                 modelData.push(temp[i].totalFinalCost);
                 modelData2.push(temp[i].totalStayingCost);
                 modelData3.push(temp[i].totalPremiumFeatures);
-                modelData4.push(temp[i].numberOfStayingDays);
+                modelData5.push(temp[i].title);
+                
+                //alert(temp[i].title);
                 //alert(temp[i].totalStayingCost);
             }
-            
-            //- alert(modelData);
-            //- alert(modelData2);
-            //- alert(modelData3);
-            //- alert(modelData4);
+            a = modelData5[0];
+            b = modelData5[1];
+            c = modelData5[2];
+            //- alert(a);
+            //- alert(b);
+            //- alert(c);
+            //- alert(temp[0].title);
             //- debugger;
+
 
             let massPopChart = new Chart(myChart, {
                 type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data:{
-                    labels:['Booking1', 'Booking2', 'Booking3'],
+                    labels:['Booking1','Booking2','Booking3'],
+                    //- labels:[a,b,c],
                     datasets:[{label:'Final Cost', data:modelData,
                     //backgroundColor:'green',
                     backgroundColor:[
@@ -224,7 +235,7 @@ block content
             let massPopChart = new Chart(myChart2, {
                 type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data:{
-                    labels:['Booking1', 'Booking2', 'Boking3'],
+                    labels:['Booking1', 'Booking2', 'Booking3'],
                     datasets:[{label:'Number of days', data:modelData4,
                     //backgroundColor:'green',
                     backgroundColor:[
