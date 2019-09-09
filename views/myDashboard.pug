@@ -15,18 +15,8 @@ block content
             .container
                 canvas#myChart
 
-            
-            #form-group
-                input(type='button' value='click HERE' onclick= 'displayFinalTotalBookingById()') 
-
-            
-
-
-
-
-
-
-
+            .container
+                canvas#myChart2
             br
             br
             h3 TODAS OFFERS QUE FIZ
@@ -46,6 +36,10 @@ block content
                             li.list-group-item
                                 a(href="/bookings/show/"+booking._id)= booking.title
 
+            h3 DADOS AQUI:
+            br
+            p "#{JSON.stringify(bookings)}"
+
 
         
 
@@ -59,6 +53,9 @@ block content
         }
 
         function makeChart1(){
+
+            
+
             let myChart = document.getElementById('myChart').getContext('2d');
 
             // Global Options
@@ -66,16 +63,81 @@ block content
             Chart.defaults.global.defaultFontSize = 18;
             Chart.defaults.global.defaultFontColor = '#777';
 
+            //- var xhttp = new XMLHttpRequest();
+            //- xhttp.onreadystatechange = function() {
+            //-     if (this.readyState == 4 && this.status == 200) {
+            //-     document.getElementById("demo").innerHTML =
+            //-     this.responseText;
+            //-     }
+            //- };
+            //- xhttp.open("GET", "ajax_info.txt", true);
+            //- xhttp.send();
+
+            var temp = !{JSON.stringify(bookings)} ;
+            //alert(temp[0]._id);
+            
+            var modelData=[];  //total
+            var modelData2=[]; //staying
+            var modelData3=[]; //premium features
+            var modelData4=[]; //staying days
+
+
+            for (var i=0; i< temp.length;i++){
+                modelData.push(temp[i].totalFinalCost);
+                modelData2.push(temp[i].totalStayingCost);
+                modelData3.push(temp[i].totalPremiumFeatures);
+                modelData4.push(temp[i].numberOfStayingDays);
+                //alert(temp[i].totalStayingCost);
+            }
+            
+            //- alert(modelData);
+            //- alert(modelData2);
+            //- alert(modelData3);
+            //- alert(modelData4);
+            //- debugger;
+
             let massPopChart = new Chart(myChart, {
                 type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data:{
-                    labels:['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-                    datasets:[{label:'Population', data:[617594,181045,153060,106519,105162,95072],
+                    labels:['Booking1', 'Booking2', 'Booking3'],
+                    datasets:[{label:'Final Cost', data:modelData,
                     //backgroundColor:'green',
                     backgroundColor:[
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(000, 000, 000, 0.6)',
+                        'rgba(000, 000, 000, 0.6)',
+                        'rgba(000, 000, 000, 0.6)',
+                        'rgba(555, 555, 555, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
+                    },
+                    {label:'Staying Cost', data:modelData2,
+                    //backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(220,20,60, 0.6)',
+                        'rgba(220,20,60, 0.6)',
+                        'rgba(220,20,60, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
+                    },
+                    {label:'Premium Features', data:modelData3,
+                    //backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(34,139,34, 0.6)',
+                        'rgba(34,139,34, 0.6)',
+                        'rgba(34,139,34, 0.6)',
                         'rgba(75, 192, 192, 0.6)',
                         'rgba(153, 102, 255, 0.6)',
                         'rgba(255, 159, 64, 0.6)',
@@ -90,7 +152,7 @@ block content
                 options:{
                     title:{
                     display:true,
-                    text:'Largest Cities In Massachusetts',
+                    text:'My Last 3 Bookings Totals in €',
                     fontSize:25
                     },
                     legend:{
@@ -116,6 +178,98 @@ block content
         }
         makeChart1();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function makeChart2(){
+
+
+            let myChart = document.getElementById('myChart2').getContext('2d');
+
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 17;
+            Chart.defaults.global.defaultFontColor = '#800080';
+
+            var temp = !{JSON.stringify(bookings)} ;
+
+            var modelData4=[]; //staying days
+
+
+            for (var i=0; i< temp.length;i++){
+
+                modelData4.push(temp[i].numberOfStayingDays);
+                //alert(temp[i].totalStayingCost);
+            }
+
+            let massPopChart = new Chart(myChart2, {
+                type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                data:{
+                    labels:['Booking1', 'Booking2', 'Boking3'],
+                    datasets:[{label:'Number of days', data:modelData4,
+                    //backgroundColor:'green',
+                    backgroundColor:[
+                        'rgba(000, 000, 000, 0.6)',
+                        'rgba(220,20,60, 0.6)',
+                        'rgba(34,139,34, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth:1,
+                    borderColor:'#777',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
+                    }]
+                },
+                options:{
+                    title:{
+                    display:true,
+                    text:'My Last 3 Bookings Staying Days',
+                    fontSize:25
+                    },
+                    legend:{
+                    display:true,
+                    position:'right',
+                    labels:{
+                        fontColor:'#000'
+                    }
+                    },
+                    layout:{
+                    padding:{
+                        left:50,
+                        right:0,
+                        bottom:0,
+                        top:0
+                    }
+                    },
+                    tooltips:{
+                    enabled:true
+                    }
+                }
+            })
+        }
+        makeChart2();
 
 
 

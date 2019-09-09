@@ -234,6 +234,7 @@ router.post('/show/makeDecision/statusUpdate/:id', ensureAuthenticated, function
 //  List MyAccomodations Booking Requests (historic)
 router.get('/show/myAccomodations/BookingRequests', ensureAuthenticated, function(req, res){
     Article.find({}, function(err, articles){
+        
         Booking.find({}, function(err, bookings){
         if(err){
             console.log(err);
@@ -270,7 +271,8 @@ router.get('/show/myAccomodations/BookingRequestsAccepted', ensureAuthenticated,
   //  List MyAccomodations Booking Requests (declined)
 router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, function(req, res){
     Article.find({}, function(err, articles){
-       Booking.find({}, function(err, bookings){
+        Booking.find({'author':req.params.id}).sort({'_id': -1}).limit(3).exec(function(err, bookings){
+        //Booking.find({}, function(err, bookings){
         if(err){
             console.log(err);
         } else {
@@ -314,6 +316,16 @@ router.get('/show/myAccomodations/BookingRequestsPending', ensureAuthenticated, 
             title:'My Dashboard',
             bookings: bookings
             });
+        }
+        });
+    });
+
+    router.get('/myDashboard-data/:id',ensureAuthenticated, function(req, res){
+        Booking.find({'author':req.params.id}).sort({'_id': -1}).limit(3).exec(function(err, bookings){
+        if(err){
+            console.log(err);
+        } else {
+            res.send(bookings);
         }
         });
     });
