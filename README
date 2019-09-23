@@ -35,8 +35,16 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 [[------------------------ PLEASE READ ME -----------------------------------]]
+ESTA MEIO INGLES MEIO PORTUGUES MAS ISTO FOI FEITO POR PARTES EM BLOCOS DE 
+NOTAS INDEPENDENTES.
+
+Aqui explica todos steps para criar um web server com rest api em 
+node express.js usando mongodb.
+finalmente explico como se faz deploy pelo heroku.
 
 
+                    BOA SORTE PANDAS!
+--------------------------------------------------------------------------------
 
 
 
