@@ -139,7 +139,7 @@ https://stackoverflow.com/questions/7948789/mongod-complains-that-there-is-no-da
 \\Close VSCodeTerm.3 and  !!!!!!!DONE !!!!!!!
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-EOF
+
 
 ### Credenciai git
 diogozup
@@ -147,11 +147,71 @@ hardone
 
 
 
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+
+             AQUI FICA COMO FAZER DEPLOY PELO HEROKU(usando addon mLab) de MONGODB (vazia inicialmente)
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+- criar conta no heroku
+- installar o heroku cli no vscode
+- criar uma app no heroku dashboard
+- aqui recebemos uns comandos git para fazer um repositorio no heroku do projeto
+- depois no heroku dashboard vamos a:
+    -Resources
+    -Find more add-ons
+    -Installar mLab MongoDB
+     -Dentro do mLab:
+        -criar um novo user em baixo da pagina
+        -e alterar o link em cima com a <username> e <password> agora criados
+- Voltamos ao VSCode:
+- no "app.js" meti:
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//-----------------------------------------------------------------process.env.PORT
+var PORT = process.env.PORT || 3000;
+
+
+//-----------------------------------------------------------process.env.MONGODB_URI
+
+mongoose.connect('mongodb://zup:Panda123123@ds115931.mlab.com:15931/heroku_wb8cx2j5');
+
+let db = mongoose.connection;
+
+// Check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+// Check for DB errors
+db.on('error', function(err){
+  console.log(err);
+});           
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+- agora fazemos no vscode ainda:
+ - git remove -v (para verificar que remotes temos para fazer push) (devemos ter origin e heroku)
+ - git add .
+ - git commit -m "Estamos a fazer update ao repostrio do heroku"
+ - git push heroku master
+
+- Finalmente vamos ao heroku e carregamos em "Open App" e vemos se resultou!!!
 
 
 
 
-
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+**************************************************************************************************************
+ EOF 
 
 
 
